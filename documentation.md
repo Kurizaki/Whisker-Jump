@@ -38,8 +38,16 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 
 | TC-№ | Initial State | Input  | Expected Output |
 | ---- | ------------- | ------ | --------------- |
-| 1.1  |               |        |                 |
-| ...  |               |        |                 |
+|1|	Game is running, player is on a platform at the start of the game.|	Press the left or right button at the bottom of the screen.|	The character moves left or right according to the button pressed.|
+|2|	Game is at the start of a new session.|	Start a new game session.|	Platforms appear randomly and in different positions each session.|
+|3|	Game is in progress, player is jumping on platforms.|	Move the character to collect fish that appear during gameplay.|	Fish are collected, and points or in-game currency are increased.|
+|4|	Player has collected fish and the game session has ended.|	Access the in-game shop from the main menu.|	The shop opens, allowing the player to spend fish on power-ups, skins, or items.|
+|5|	Game session has ended.|	View the post-game screen.|	The player's high score is displayed on the screen.|
+|6|	Game is in progress.|	Continue playing the game.|	Different types of platforms (moving, breaking) appear during gameplay.|
+|7|	Game is running.|	Observe game performance.|	The game runs at a smooth frame rate, and controls are responsive without lag.|
+|8|	Game session has ended, player has achieved a new high score.|	Exit the game.|	High score and progress are saved automatically.|
+|9|	Player has purchased a skin from the shop.|	Access the character customization menu.|	The purchased skin is available for selection, and the player can apply it to their character.|
+|10|	Game is installed on an Android device.|	Launch the game on an Android device.|	The game launches successfully, and all functionalities work as intended on Android.|
 
 ✍️ The number follows the format `N.m`, where `N` is the number of the user story that the test case covers, and `m` starts from `1` and increments. For example, the third test case that covers the second user story would have the number `2.3`.
 
