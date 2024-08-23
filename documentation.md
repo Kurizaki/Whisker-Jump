@@ -1,21 +1,23 @@
 
 # Project Documentation
 
-☝️ All sections marked with a ✍️ can be deleted once you have filled in the relevant information.
-
-✍️ Your Group Name and Surnames
+Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
 
 | Date | Version | Summary                                                  |
 | ---- | ------- | -------------------------------------------------------- |
-|      | 0.0.1   | ✍️ Each time you work on the project, add a new line here and describe in *one* sentence what you have achieved. |
+|  23.08.24    | 0.0.1   | We created a .NET MAUI project and started to change the MainWindow.xaml file. |
 |      | ...     |                                                          |
-|      | 1.0.0   |                                                          |
+|      | ...     |                                                          |
+|      | ...     |                                                          |
+|      | ...     |                                                          |
+|      | ...     |                                                          |
+|      | ...     |                                                          |
 
 ## 1. Information
 
 ### 1.1 Your Project
 
-✍️ Describe your project in one concise sentence.
+Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, who will jump on top of platform to reach a high highscore. Once the cat falls down, the game is over and the player loses. There might be the possibility oof a shop, in which the player can buy skins and items. The player will have to catch fish, since they will be used to purchase items from the shop.
 
 ### 1.2 User Stories
 
@@ -23,8 +25,6 @@
 | ---- | ------------ | ---- | --------------------------------------- |
 | 1    |              |      | As a 🤷‍♂️, I want 🤷‍♂️ so that 🤷‍♂️. |
 | ...  |              |      |                                         |
-
-✍️ Each user story should have a unique integer number (1, 2, 3, etc.), a priority (Must or Can?), and a type (Functional, Quality, Constraint). The user story itself should follow this format: *As a 🤷‍♂️, I want 🤷‍♂️ so that 🤷‍♂️.*
 
 ### 1.3 Test Cases
 
