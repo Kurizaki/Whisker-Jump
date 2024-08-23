@@ -49,11 +49,9 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 |9|	Player has purchased a skin from the shop.|	Access the character customization menu.|	The purchased skin is available for selection, and the player can apply it to their character.|
 |10|	Game is installed on an Android device.|	Launch the game on an Android device.|	The game launches successfully, and all functionalities work as intended on Android.|
 
-✍️ The number follows the format `N.m`, where `N` is the number of the user story that the test case covers, and `m` starts from `1` and increments. For example, the third test case that covers the second user story would have the number `2.3`.
-
 ### 1.4 Diagrams
 
-✍️ Here you can insert PAPs, Use Case diagrams, Gantt charts, or similar visuals.
+-
 
 ## 2. Planning
 
