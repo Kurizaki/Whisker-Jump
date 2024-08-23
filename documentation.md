@@ -23,7 +23,7 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 
 | US-№ | Priority     | Type | Description                             |
 | ---- | ------------ | ---- | --------------------------------------- |
-|1|	Must|	Functional|	As a player, I want to control a character by tilting my device so that I can navigate the platforms and progress in the game.|
+|1|	Must|	Functional|	As a player, I want to control a character by pressing two buttons at the bottom of the screen, so that I can navigate the platforms and progress in the game.|
 |2|	Must|	Functional|	As a player, I want the platforms to appear randomly, so that each game session feels unique.|
 |3|	Must|	Functional|	As a player, I want to collect fish during gameplay to earn points or in-game currency.|
 |4|	Can|	Functional|	As a player, I want to access a shop where I can spend collected fish to buy power-ups, skins, or other items.|
@@ -31,8 +31,8 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 |6|	Can|	Functional|	As a player, I want the game to include different types of platforms, such as moving or breaking platforms, to add variety to the gameplay.|
 |7|	Must|	Quality|	As a developer, I want the game to have a smooth frame rate and responsive controls, so that the gameplay experience is enjoyable and free of lag.|
 |8|	Must|	Functional|	As a player, I want my progress and high scores to be saved automatically, so I don’t lose my achievements when I exit the game.|
-|9|	Can|	Functional|	As a player, I want to have an option to customize my character with different skins or outfits.|
-|10|	Can|	Non-functional|	As a developer, I want the game to be available on multiple platforms (Android, iOS, Windows), so that it reaches a broader audience.|
+|9|	Can|	Functional|	As a player, I want to have an option to customize my character with different skins or outfits, after buying them from the shop.|
+|10|	Can|	Non-functional|	As a developer, I want the game to be available on Android devices.|
 
 ### 1.3 Test Cases
 
