@@ -34,6 +34,7 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 | 9    |              |      |                                         |
 | 10   |              |      |                                         |
 
+| ---- | ------------ | ---- | --------------------------------------- |
 |1|	Must|	Functional|	As a player, I want to control a character by tilting my device so that I can navigate the platforms and progress in the game.|
 |2|	Must|	Functional|	As a player, I want the platforms to appear randomly, so that each game session feels unique.|
 |3|	Must|	Functional|	As a player, I want to collect fish during gameplay to earn points or in-game currency.|
