@@ -6,7 +6,7 @@ Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
 | Date | Version | Summary                                                  |
 | ---- | ------- | -------------------------------------------------------- |
 |  23.08.24    | 0.0.1   | We created a .NET MAUI project and started to change the MainWindow.xaml file. |
-|      | ...     |                                                          |
+|  30.08.24    | 0.0.2   | We made a Figma about our project and started to recreate the design of it in MAUI. The game logic hasn't been touched yet.                                                         |
 |      | ...     |                                                          |
 |      | ...     |                                                          |
 |      | ...     |                                                          |
@@ -57,14 +57,26 @@ Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, 
 
 | AP-№ | Deadline | Responsible | Description | Planned Time |
 | ---- | -------- | ----------- | ----------- | ------------ |
-| 1.A  |          |             |             |              |
-| ...  |          |             |             |              |
+| 1.A  | 6.09.24         |      -       |      Two buttons at the bottom of the screen are present.       |       45'       |
+| 1.B  | 6.09.24         |      -       |      Logic for the buttons is implemented and the buttons make the character move.       |     180'         |
+| 2.A  | 6.09.24         |      -       |      Platforms (of various types) appear on the screen after hitting "Play".       |       60'       |
+| 2.B  | 6.09.24         |      -       |      Logic for the platforms is implemented. the player can phisically interact with them.       |       200'      |
+| 3.A  |    6.09.24      |      -       |      Fishes spawn of top of platforms.       |      30'        |
+| 3.B  |    13.09.24     |      -       |      Fish logic is implemented and the player can collect the fishes by touching them while playing.       |       60'       |
+| 4.A  |    13.09.24      |     -       |      The amount of fish collected will be shown on the screen.       |       15'       |
+| 4.B  |    13.09.24      |     -       |      The player can enter the shop by clicking the "shop" button at the start of the game.       |       45'       |
+| 4.C  |    13.09.24      |     -       |      The palyer is able to purchase various items and skins thanks to the collected fishes.       |      120'        |
+| 4.D  |    13.09.24      |     -       |     Fish and shop logic are implemented in the game. The player can equip skins / items from the shop.        |       180'        |
+| 5.A  |    20.09.24      |     -       |     An highscore displays the highest amount of points that the player has ever gotten.        |         30'     |
+| 6.A  |    20.09.24      |     -       |     Stationary paltforms are present int the game.        |      180'        |
+| (6.B)  |   20.09.2      |     -       |     Moving platforms; Breakable paltforms; "One-Time-Use" platforms and boost platforms are present in the game.        |      300'        |
+| 6.C  |    20.09.24      |     -       |     The game logic for the platforms (potentially for 6.B aswell) is implemented in the game and the character can interact with them.        |       240'       |
+| 7.A  |    When the game is finished      |      -       |      Game runs smoothly       |       ?       |
+| 8.A  |    27.09.24      |     -       |     Highscore saves the best try automatically.        |      60'        |
+| 9.A  |    27.09.24      |     -       |     The player can wear clothes or use items after purchasing them from the store.        |         180'     |
+| 10.A |     -     |      -       |      Game is on android       |       -       |
 
-Total: 
-
-✍️ The number follows the format `N.m`, where `N` is the number of the user story to which the work package relates, and `m` starts from `A` and goes upward in letters. For example, the third work package related to the second user story would have the number `2.C`.
-
-✍️ A work package should take approximately 45 minutes for one person. The total number of work packages should roughly match this formula: `Number of R-Sessions` ╳ `Number of Group Members` ╳ `4`. So, if three people are working on a project with two planned R-sessions, you should have `2` ╳ `3` ╳ `4` = `24` work packages. If you find that you don’t have enough work packages, consider adding more "Can"-type user stories in Section 1.2.
+Total: 1817 minutes ~ 30 hours
 
 ## 3. Decisions
 
@@ -89,15 +101,6 @@ Total:
 | ...  |       |        |        |
 
 ✍️ Don’t forget to add a conclusion that summarizes the test results.
-
-### 5.2 Exploratory Testing
-
-| BR-№ | Initial State | Input  | Expected Output | Actual Output |
-| ---- | ------------ | ------ | --------------- | ------------- |
-| I    |              |        |                 |               |
-| ...  |              |        |                 |               |
-
-✍️ Use Roman numerals for your bug reports, such as I, II, III, IV, etc.
 
 ## 6. Evaluation
 
