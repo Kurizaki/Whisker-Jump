@@ -6,8 +6,8 @@ Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
 | Date | Version | Summary                                                  |
 | ---- | ------- | -------------------------------------------------------- |
 |  23.08.24    | 0.0.1   | We created a .NET MAUI project and started to change the MainWindow.xaml file. |
-|  30.08.24    | 0.0.2   | We made a Figma about our project and started to recreate the design of it in MAUI. The game logic hasn't been touched yet.                                                         |
-|      | ...     |                                                          |
+|  30.08.24    | 0.0.2   | We made a Figma about our project and started to recreate the design of it in MAUI. The game logic hasn't been touched yet.   |
+|  06.09.24    | 0.0.3   | Today, we changed the Figma to better suit our program. We made a Use-Case of our program. We started to work on the logic behind the platforms and the buttons.   |
 |      | ...     |                                                          |
 |      | ...     |                                                          |
 |      | ...     |                                                          |
