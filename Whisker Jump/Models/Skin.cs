@@ -2,19 +2,19 @@
 
 namespace Whisker_Jump.Models
 {
-    public class ShopItem
+    public class Skin
     {
         public string Name { get; set; }
+        public string ImagePath { get; set; }
         public int Price { get; set; }
-        public string Type { get; set; }
-        public bool IsPurchased { get; private set; }
+        public bool IsPurchased { get; set; }
 
-        public ShopItem(string name, int price, string type)
+        public Skin(string name = "Default", string imagePath = "default_skin.png", int price = 0)
         {
             Name = name;
+            ImagePath = imagePath;
             Price = price;
-            Type = type;
-            IsPurchased = false;
+            IsPurchased = price == 0;
         }
 
         public bool Purchase(int fishCount)
@@ -25,6 +25,11 @@ namespace Whisker_Jump.Models
                 return true;
             }
             return false;
+        }
+
+        public void ApplyTo(Character character)
+        {
+            character.CurrentSkin = this;
         }
     }
 }
