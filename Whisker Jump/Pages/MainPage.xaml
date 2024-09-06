@@ -17,7 +17,7 @@
             </HorizontalStackLayout>
             <!-- Settings Button -->
             <ImageButton Source="Resources/Buttons/settings_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75"
-                         VerticalOptions="End" HorizontalOptions="End"/>
+                         VerticalOptions="End" HorizontalOptions="End" Clicked="SettingsButtonClicked"/>
         </Grid>
 
         <!-- Game Title -->
@@ -25,7 +25,7 @@
 
         <!-- Play Button -->
         <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <ImageButton Source="Resources/Buttons/play_button.png" HeightRequest="125" WidthRequest="125"/>
+            <ImageButton Source="Resources/Buttons/play_button.png" HeightRequest="125" WidthRequest="125" Clicked="PlayButtonClicked"/>
         </VerticalStackLayout>
 
         <!-- Highscore and Shop -->
@@ -39,7 +39,7 @@
             <Label Text="Highscore: 1207250" Grid.Column="0" FontSize="Medium" HorizontalOptions="Start" />
 
             <!-- Shop Button -->
-            <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75" HorizontalOptions="End" />
+            <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75" HorizontalOptions="End" Clicked="ShopButtonClicked"/>
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

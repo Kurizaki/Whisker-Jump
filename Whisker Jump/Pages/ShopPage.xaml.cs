@@ -1,8 +1,8 @@
 namespace Whisker_Jump.Pages;
 
-public partial class Shop : ContentPage
+public partial class ShopPage : ContentPage
 {
-	public Shop()
+	public ShopPage()
 	{
 		InitializeComponent();
 	}

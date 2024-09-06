@@ -1,4 +1,6 @@
-﻿namespace Whisker_Jump
+﻿using Whisker_Jump.Pages;
+
+namespace Whisker_Jump
 {
     public partial class MainPage : ContentPage
     {
@@ -14,6 +16,19 @@
             CoinCountLabel.Text = coinCount.ToString();
         }
 
+        private async void SettingsButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
+        private async void PlayButtonClicked(object sender, EventArgs args)
+        {
+            //hide menu items and start gameloop
+            await Navigation.PushAsync(new SettingsPage());
+        }
+        private async void ShopButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ShopPage());
+        }
     }
 
 }
