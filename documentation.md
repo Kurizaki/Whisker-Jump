@@ -55,6 +55,10 @@ Whisker Jump is a game heavily inspired by the gamme Doodle Jump and is made in 
 ![image](https://github.com/user-attachments/assets/c14c57d8-a789-4147-bf13-b2760fda5739)
 
 
+![Whisker-Jump_Use-Case](https://github.com/user-attachments/assets/08fde408-263b-4ce6-995a-e661468a1150)
+
+
+
 ## 2. Planning
 
 | AP-№ | Deadline | Responsible | Description | Planned Time |
