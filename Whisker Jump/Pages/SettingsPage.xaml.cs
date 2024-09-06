@@ -1,9 +1,18 @@
-namespace Whisker_Jump.Pages;
+using Microsoft.Maui.Controls;
 
-public partial class SettingsPage : ContentPage
+namespace Whisker_Jump.Pages
 {
-	public SettingsPage()
-	{
-		InitializeComponent();
-	}
+    public partial class SettingsPage : ContentPage
+    {
+        public SettingsPage()
+        {
+            InitializeComponent();
+        }
+
+        private async void OnBackButtonClicked(object sender, EventArgs e)
+        {
+            // Navigate back to MainMenu.xaml
+            await Navigation.PushAsync(new MainPage());
+        }
+    }
 }

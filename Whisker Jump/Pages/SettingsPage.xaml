@@ -2,8 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Whisker_Jump.Pages.SettingsPage"
-             Title="SettingsPage">
-    <VerticalStackLayout>
-        <ImageButton Source="back_button.png" />
-    </VerticalStackLayout>
+             Title="SettingsPage"
+             BackgroundColor="#F5DEB3">
+    <!-- Set the background color -->
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto">
+        <!-- Back Button -->
+        <ImageButton Source="back_button.png"
+                     Grid.Row="0"
+                     HorizontalOptions="Start"
+                     Margin="10,10,0,0"
+                     Clicked="OnBackButtonClicked"/>
+
+        <!-- Volume Slider with Mute and Unmute Buttons -->
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
+            <Image Source="volume_off.png"
+                         HorizontalOptions="End"
+                         Margin="0,0,10,0" />
+            <Slider WidthRequest="150"
+                    VerticalOptions="Center"
+                    ThumbColor="#c68120"
+                    MinimumTrackColor="#c68120"
+                    MaximumTrackColor="#eeeeee"/>
+            <Image Source="volume_on.png"
+                         HorizontalOptions="Start"
+                         Margin="10,0,0,0" />
+        </HorizontalStackLayout>
+
+        <!-- Contact Us Button -->
+        <ImageButton Source="contact_us_button.png"
+                     Grid.Row="2"
+                     HorizontalOptions="Center"
+                     Margin="40,0,0,100" />
+
+        <!-- Rate Us Button -->
+        <ImageButton Source="rate_us_button.png"
+                     Grid.Row="3"
+                     HorizontalOptions="Center"
+                     Margin="0,0,0,150"/>
+    </Grid>
 </ContentPage>
