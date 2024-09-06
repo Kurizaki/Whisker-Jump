@@ -17,7 +17,7 @@ Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
 
 ### 1.1 Your Project
 
-Whisker Jump is a copy in .NET MAUI off Doodle Jump. The main character is cat, who will jump on top of platform to reach a high highscore. Once the cat falls down, the game is over and the player loses. There might be the possibility oof a shop, in which the player can buy skins and items. The player will have to catch fish, since they will be used to purchase items from the shop.
+Whisker Jump is a game heavily inspired by the gamme Doodle Jump and is made in .NET MAUI. The main character is cat, who will jump on top of platform to reach a high highscore. Once the cat falls down, the game is over and the player loses. There might be the possibility oof a shop, in which the player can buy skins and items. The player will have to catch fish, since they will be used to purchase items from the shop.
 
 ### 1.2 User Stories
 
@@ -80,7 +80,9 @@ Total: 1817 minutes ~ 30 hours
 
 ## 3. Decisions
 
-✍️ Document here the decisions and assumptions you made regarding your user stories and implementation.
+We chose those user stories, because we find them to be perfect for this program. The sistematic implementation of platforms is a great help for us, since this is the first time that we work with .NET MAUI and so this enables us to implement what we really can and if good enough, even more. The various parts of this program have been separated, so that if one part doesn't work, the rest can. The player character should be implemented fully, for the program to even be functional, as well as the buttons. A lot of ideas are not really documented, since it might be too much for this group to handl, but they are still with us and if needed, we can implement them in the program.
+
+The work packages have been created in a way, that if one isn't able to implement something, the others can jump in to help.
 
 ## 4. Implementation
 
