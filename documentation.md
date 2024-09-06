@@ -82,9 +82,9 @@ Total: 1817 minutes ~ 30 hours
 
 ## 3. Decisions
 
-We chose those user stories, because we find them to be perfect for this program. The sistematic implementation of platforms is a great help for us, since this is the first time that we work with .NET MAUI and so this enables us to implement what we really can and if good enough, even more. The various parts of this program have been separated, so that if one part doesn't work, the rest can. The player character should be implemented fully, for the program to even be functional, as well as the buttons. A lot of ideas are not really documented, since it might be too much for this group to handl, but they are still with us and if needed, we can implement them in the program.
+We chose these user stories because we find them to be perfect for this program. The systematic implementation of platforms is a great help for us, as this is the first time we are working with .NET MAUI. This enables us to implement what we really can and, if good enough, even more. The various parts of this program have been separated so that if one part doesn’t work, the rest can. The player character should be fully implemented for the program to be functional, as well as the buttons. Many ideas are not documented, as it might be too much for this group to handle, but they are still with us, and if needed, we can implement them in the program.
 
-The work packages have been created in a way, that if one isn't able to implement something, the others can jump in to help.
+The work packages have been created in a way that if one person isn’t able to implement something, others can jump in to help. Many packages are divided into two parts: the logic (C#) and the GUI (XML). If someone can’t implement the GUI part, they can try to make the logic work, after someone else either helps them or does it themselves.
 
 ## 4. Implementation
 
