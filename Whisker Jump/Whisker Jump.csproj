@@ -58,10 +58,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\BackButton.png" />
-	  <None Remove="Resources\Images\ButtonRight.png" />
-	  <None Remove="Resources\Images\LeftButton.png" />
-	  <None Remove="Resources\Images\ShopItem.png" />
+	  <None Remove="Resources\Images\back_button.png" />
+	  <None Remove="Resources\Images\contact_us_button.png" />
+	  <None Remove="Resources\Images\left_button.png" />
+	  <None Remove="Resources\Images\rate_us_button.png" />
+	  <None Remove="Resources\Images\right_button.png" />
+	  <None Remove="Resources\Images\shop_item.png" />
+	  <None Remove="Resources\Images\volume_off.png" />
+	  <None Remove="Resources\Images\volume_on.png" />
 	</ItemGroup>
 
 	<ItemGroup>

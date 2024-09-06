@@ -4,9 +4,6 @@
              x:Class="Whisker_Jump.Pages.SettingsPage"
              Title="SettingsPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ImageButton Source="back_button.png" />
     </VerticalStackLayout>
 </ContentPage>
