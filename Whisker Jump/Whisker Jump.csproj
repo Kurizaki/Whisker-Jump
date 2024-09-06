@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\back_button.png" />
 	  <None Remove="Resources\Images\contact_us_button.png" />
 	  <None Remove="Resources\Images\left_button.png" />
+	  <None Remove="Resources\Images\main_background.png" />
 	  <None Remove="Resources\Images\rate_us_button.png" />
 	  <None Remove="Resources\Images\right_button.png" />
 	  <None Remove="Resources\Images\shop_item.png" />

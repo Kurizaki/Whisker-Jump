@@ -1,45 +1,56 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Whisker_Jump.MainPage"
              BackgroundColor="#F5DEB3">
-    <VerticalStackLayout>
-        <!-- Top Bar -->
-        <Grid Padding="10" VerticalOptions="Start">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <!-- Coins and Count -->
-            <HorizontalStackLayout Grid.Column="0">
-                <Image Source="Resources/Images/fishies.png" HeightRequest="30" WidthRequest="30" />
-                <Label x:Name="CoinCountLabel" VerticalOptions="Center" FontSize="Medium" />
-            </HorizontalStackLayout>
-            <!-- Settings Button -->
-            <ImageButton Source="Resources/Buttons/settings_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75"
-                         VerticalOptions="End" HorizontalOptions="End" Clicked="SettingsButtonClicked"/>
-        </Grid>
+    <Grid>
+        <!-- Main content layout -->
+        <VerticalStackLayout>
+            <!-- Top Bar -->
+            <Grid Padding="10" VerticalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!-- Coins and Count -->
+                <HorizontalStackLayout Grid.Column="0">
+                    <Image Source="Resources/Images/fishies.png" HeightRequest="40" WidthRequest="40" Margin="0,-40,0,0" />
+                    <Label x:Name="CoinCountLabel" VerticalOptions="Center" FontSize="Medium" Margin="0,-40,0,0" />
+                </HorizontalStackLayout>
+                <!-- Settings Button -->
+                <ImageButton Source="Resources/Buttons/settings_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75"
+                             VerticalOptions="End" HorizontalOptions="End" Clicked="SettingsButtonClicked"/>
+            </Grid>
 
-        <!-- Game Title -->
-        <Image  Source="Resources/Buttons/main_title.png" HorizontalOptions="Center" />
+            <!-- Game Title -->
+            <Image Source="Resources/Buttons/main_title.png" HorizontalOptions="Center" Margin="0,0,60,0"/>
 
-        <!-- Play Button -->
-        <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <ImageButton Source="Resources/Buttons/play_button.png" HeightRequest="125" WidthRequest="125" Clicked="PlayButtonClicked"/>
+            <!-- Play Button -->
+            <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <ImageButton Source="Resources/Buttons/play_button.png" HeightRequest="115" WidthRequest="115" Clicked="PlayButtonClicked" Margin="30,80,0,0"/>
+            </VerticalStackLayout>
+
+            <!-- Highscore and Shop (Buttons near the bottom) -->
+            <Grid Padding="10" VerticalOptions="EndAndExpand" Margin="0,90,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Highscore -->
+                <Label Text="Highscore: 1207250" Grid.Column="0" FontSize="Medium" HorizontalOptions="Start" Margin="0,30,0,0"/>
+
+                <!-- Shop Button -->
+                <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75" HorizontalOptions="End" Clicked="ShopButtonClicked"/>
+            </Grid>
         </VerticalStackLayout>
 
-        <!-- Highscore and Shop -->
-        <Grid Padding="10" VerticalOptions="EndAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <!-- Highscore -->
-            <Label Text="Highscore: 1207250" Grid.Column="0" FontSize="Medium" HorizontalOptions="Start" />
-
-            <!-- Shop Button -->
-            <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="75" WidthRequest="75" HorizontalOptions="End" Clicked="ShopButtonClicked"/>
-        </Grid>
-    </VerticalStackLayout>
+        <!-- Background Image at the bottom -->
+        <Image Source="Resources/Images/main_background.png"
+               Aspect="AspectFit"
+               VerticalOptions="End"
+               HorizontalOptions="FillAndExpand"
+               Margin="0,0,0,0"
+               Opacity="1"/>
+        <!-- Optionally, adjust the opacity to make the buttons more visible -->
+    </Grid>
 </ContentPage>
