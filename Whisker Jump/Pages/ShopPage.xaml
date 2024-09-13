@@ -2,11 +2,114 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Whisker_Jump.Pages.ShopPage"
-             Title="Shop">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Shop"
+             BackgroundColor="#F5DEB3">
+    <!-- Set the background color -->
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" ColumnDefinitions="*,*,*">
+
+        <!-- Back Button -->
+        <ImageButton Source="back_button.png"
+                     Grid.Row="0" Grid.Column="0"
+                     HorizontalOptions="Start"
+                     Margin="10,10,0,0"
+                     Clicked="OnBackButtonClicked"/>
+
+        <!-- Fish Counter -->
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="1"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               Margin="0,10,0,0">
+            <Image Source="fishies.png"
+                   WidthRequest="25"
+                   HeightRequest="25"
+                   VerticalOptions="Center"
+                   Scale="1.8"/>
+            <Label x:Name="FishCounter"
+                   Text="13262"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   Margin="10,0,0,0"
+                   TextColor="Black"/>
+        </HorizontalStackLayout>
+
+        <!-- Cart Icon -->
+        <Image Source="shopping_cart.png"
+               Grid.Row="0" Grid.Column="2"
+               WidthRequest="30"
+               HeightRequest="30"
+               HorizontalOptions="End"
+               VerticalOptions="Start"
+               Margin="0,10,10,0"
+               Scale="1.8"/>
+
+        <!-- Shop Items (3x2 grid of buttons with images) -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="3"
+              RowDefinitions="Auto,Auto,Auto,Auto"
+              ColumnDefinitions="*,*">
+
+            <!-- First Item -->
+            <ImageButton Source="shop_item.png"
+                         Grid.Row="0" Grid.Column="0"
+                         WidthRequest="100" HeightRequest="100"
+                         HorizontalOptions="Center"
+                         Clicked="OnItemClicked"/>
+            <Label Text="200"
+                   Grid.Row="1" Grid.Column="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TextColor="Black"/>
+
+            <!-- Second Item -->
+            <ImageButton Source="shop_item.png"
+                         Grid.Row="0" Grid.Column="1"
+                         WidthRequest="100" HeightRequest="100"
+                         HorizontalOptions="Center"
+                         Clicked="OnItemClicked"/>
+            <Label Text="300"
+                   Grid.Row="1" Grid.Column="1"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TextColor="Black"/>
+
+            <!-- Third Item -->
+            <ImageButton Source="shop_item.png"
+                         Grid.Row="2" Grid.Column="0"
+                         WidthRequest="100" HeightRequest="100"
+                         HorizontalOptions="Center"
+                         Clicked="OnItemClicked"/>
+            <Label Text="200"
+                   Grid.Row="3" Grid.Column="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TextColor="Black"/>
+
+            <!-- Fourth Item -->
+            <ImageButton Source="shop_item.png"
+                         Grid.Row="2" Grid.Column="1"
+                         WidthRequest="100" HeightRequest="100"
+                         HorizontalOptions="Center"
+                         Clicked="OnItemClicked"/>
+            <Label Text="500"
+                   Grid.Row="3" Grid.Column="1"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TextColor="Black"/>
+        </Grid>
+
+        <!-- Pagination Buttons -->
+        <HorizontalStackLayout Grid.Row="3" Grid.ColumnSpan="3"
+                               HorizontalOptions="Center"
+                               Margin="0,20,0,0">
+            <ImageButton Source="left_arrow.png"
+                         HorizontalOptions="Start"/>
+            <Image Source="dots.png" 
+                   HorizontalOptions="Center"
+                   Margin="10,0"/>
+            <ImageButton Source="right_arrow.png"
+                         HorizontalOptions="End"/>
+        </HorizontalStackLayout>
+
+    </Grid>
 </ContentPage>

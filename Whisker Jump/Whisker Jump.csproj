@@ -64,6 +64,7 @@
 	  <None Remove="Resources\Images\main_background.png" />
 	  <None Remove="Resources\Images\rate_us_button.png" />
 	  <None Remove="Resources\Images\right_button.png" />
+	  <None Remove="Resources\Images\shopping_cart.png" />
 	  <None Remove="Resources\Images\shop_item.png" />
 	  <None Remove="Resources\Images\volume_off.png" />
 	  <None Remove="Resources\Images\volume_on.png" />

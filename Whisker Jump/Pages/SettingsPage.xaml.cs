@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls;
-
 namespace Whisker_Jump.Pages
 {
     public partial class SettingsPage : ContentPage
