@@ -13,6 +13,7 @@ namespace Whisker_Jump
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("TheGirlNextDoor-Regular.ttf", "TheGirlNextDoorRegular");
                 });
 
 #if DEBUG

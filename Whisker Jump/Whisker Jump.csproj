@@ -58,6 +58,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\TheGirlNextDoor-Regular.ttf" />
 	  <None Remove="Resources\Images\back_button.png" />
 	  <None Remove="Resources\Images\contact_us_button.png" />
 	  <None Remove="Resources\Images\left_button.png" />
