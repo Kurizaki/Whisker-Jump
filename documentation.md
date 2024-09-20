@@ -65,16 +65,16 @@ Whisker Jump is a game heavily inspired by the gamme Doodle Jump and is made in 
 | ---- | -------- | ----------- | ----------- | ------------ |
 | 1.A  | 6.09.24         |      -       |      Two buttons at the bottom of the screen are present.       |       45'       |
 | 1.B  | 6.09.24         |      -       |      Implement and test the character movement via button presses. Character moves left and right.       |     180'         |
-| 2.A  | 6.09.24         |      -       |      Platforms (of various types) appear on the screen after hitting "Play".       |       60'       |
+| 2.A  | 6.09.24         |      -       |      Implement logic for platforms of various types to appear randomly on the screen after hitting "Play." Ensure correct platform distribution (e.g., 20% breakable, 30% stationary, etc.).       |       60'       |
 | 2.B  | 6.09.24         |      -       |      Implement logic for platform interaction. Ensure collision detection and platform behaviors.       |       200'      |
-| 3.A  |    6.09.24      |      -       |      Fishes spawn of top of platforms.       |      30'        |
+| 3.A  |    6.09.24      |      -       |      Implement logic for fish to spawn on top of platforms at set intervals (e.g., every 5 seconds). Ensure spawning is random and balanced across all platform types.       |      30'        |
 | 3.B  |    13.09.24     |      -       |      Fish logic is implemented and the player can collect the fishes by touching them while playing.       |       60'       |
 | 4.A  |    13.09.24      |     -       |      The amount of fish collected will be shown on the screen.       |       15'       |
 | 4.B  |    13.09.24      |     -       |      The player can enter the shop by clicking the "shop" button at the start of the game.       |       45'       |
 | 4.C  |    13.09.24      |     -       |      The palyer is able to purchase various items and skins thanks to the collected fishes.       |      120'        |
 | 4.D  |    13.09.24      |     -       |      Implement fish and shop logic. Players can collect fish, purchase items, and equip skins.        |       180'        |
 | 5.A  |    20.09.24      |     -       |     An highscore displays the highest amount of points that the player has ever gotten.        |         30'     |
-| 6.A  |    20.09.24      |     -       |     Stationary paltforms are present int the game.        |      180'        |
+| 6.A  |    20.09.24      |     -       |     Ensure stationary platforms are correctly positioned and interactable by the player. Platforms should not move and must support player standing/jumping.        |      180'        |
 | (6.B)  |   20.09.2      |     -       |     Moving platforms; Breakable paltforms; "One-Time-Use" platforms and boost platforms are present in the game.        |      300'        |
 | 6.C  |    20.09.24      |     -       |     The game logic for the platforms (potentially for 6.B aswell) is implemented in the game and the character can interact with them.        |       240'       |
 | 7.A  |    When the game is finished      |      -       |      Game runs smoothly       |       ?       |
