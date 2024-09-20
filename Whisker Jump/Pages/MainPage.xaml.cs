@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.Maui.Controls;
-using System.Threading.Tasks;
+﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.Dispatching;
 using System.Collections.Generic;
-using Whisker_Jump.Pages;
+using Whisker_Jump.Models;
 using Microsoft.Maui.Layouts;
+using Whisker_Jump.Pages;
 
 namespace Whisker_Jump
 {
@@ -11,62 +11,107 @@ namespace Whisker_Jump
     {
         private double characterY;
         private double characterX;
-        private double jumpSpeed = -15;
-        private double gravity = 0.5;
-        private double velocity = 0;
-        private double joystickSensitivity = 5;
-        private bool isJumping = false;
-        private bool isGameOver = false;
-        private bool isGameStarted = false;
-        private List<BoxView> platforms = new List<BoxView>();
-        private BoxView Character;
-        private Random random = new Random();
-        private int platformCount = 6;
-        private double platformSpacing = 150;
+        private const double JumpSpeed = -15;
+        private const double Gravity = 0.5;
+        private double velocity;
+        private const double JoystickSensitivity = 5;
+        private bool isJumping;
+        private bool isGameOver;
+        private bool isGameStarted;
+        private readonly List<BoxView> platforms = new();
+        private BoxView Character = null!;
+        private readonly Random random = new();
+        private const int PlatformCount = 6;
+        private const double PlatformSpacing = 150;
+        private readonly HighScore highScore;
+        private IDispatcherTimer? gameTimer;
 
         public MainPage()
         {
             InitializeComponent();
             InitializeJoystick();
+            highScore = new HighScore();
+            HighScoreLabel.Text = highScore.Value.ToString();
+            InitializeGameTimer();
+        }
+
+        private void InitializeGameTimer()
+        {
+            gameTimer = Dispatcher.CreateTimer();
+            gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            gameTimer.Tick += OnGameTick;
+        }
+
+        private void OnGameTick(object? sender, EventArgs e)
+        {
+            if (!isGameOver)
+            {
+                UpdateCharacterPosition();
+                CheckPlatformCollision();
+            }
+        }
+
+        private void UpdateCharacterPosition()
+        {
+            velocity += Gravity;
+            characterY += velocity;
+
+            if (characterY < Height / 2)
+            {
+                MovePlatformsDown(characterY - Height / 2);
+                characterY = Height / 2;
+            }
+
+            Character.TranslationY = characterY;
+
+            if (characterY > Height + Character.Height)
+            {
+                GameOver();
+            }
         }
 
         private void InitializeJoystick()
         {
             var panGesture = new PanGestureRecognizer();
-            panGesture.PanUpdated += OnJoystickPanUpdated;
+            panGesture.PanUpdated += OnJoystickPanUpdated!;
             Joystick.GestureRecognizers.Add(panGesture);
         }
 
-        private void OnJoystickPanUpdated(object sender, PanUpdatedEventArgs e)
+        private void OnJoystickPanUpdated(object? sender, PanUpdatedEventArgs e)
         {
             if (!isGameStarted && e.StatusType == GestureStatus.Running)
             {
                 isGameStarted = true;
-                StartJumping();
+                gameTimer?.Start();
             }
 
             if (isGameStarted && e.StatusType == GestureStatus.Running)
             {
-                characterX += e.TotalX * joystickSensitivity / 100;
+                characterX += e.TotalX * JoystickSensitivity / 100;
 
-                if (characterX < 0) characterX = this.Width;
-                if (characterX > this.Width) characterX = 0;
+                if (characterX < 0) characterX = Width;
+                if (characterX > Width) characterX = 0;
 
                 Character.TranslationX = characterX;
             }
+
+            if (isGameStarted && e.StatusType == GestureStatus.Completed && !isJumping)
+            {
+                isJumping = true;
+                velocity = JumpSpeed;
+            }
         }
 
-        private async void PlayButtonClicked(object sender, EventArgs args)
+        private void PlayButtonClicked(object sender, EventArgs args)
         {
             MainMenu.IsVisible = false;
             GameScreen.IsVisible = true;
             isGameOver = false;
 
             ResetGame();
-
             GenerateInitialPlatforms();
-
             CreateCharacter();
+            gameTimer?.Start();
         }
 
         private void CreateCharacter()
@@ -82,7 +127,7 @@ namespace Whisker_Jump
             {
                 var firstPlatform = platforms[0];
 
-                characterX = firstPlatform.TranslationX + firstPlatform.Width / 2 - Character.Width / 2;
+                characterX = firstPlatform.TranslationX + (firstPlatform.Width - Character.Width) / 2;
                 characterY = firstPlatform.TranslationY - Character.Height;
 
                 velocity = 0;
@@ -110,10 +155,10 @@ namespace Whisker_Jump
             platforms.Clear();
             PlatformsLayout.Children.Clear();
 
-            for (int i = 0; i < platformCount; i++)
+            for (int i = 0; i < PlatformCount; i++)
             {
-                double platformX = random.Next(0, (int)(this.Width - 150));
-                double platformY = this.Height - (i * platformSpacing) - 100;
+                double platformX = random.Next(0, (int)(Width - 150));
+                double platformY = Height - (i * PlatformSpacing) - 100;
 
                 var platform = new BoxView
                 {
@@ -128,39 +173,12 @@ namespace Whisker_Jump
                 PlatformsLayout.Children.Add(platform);
                 platforms.Add(platform);
             }
-        }
 
-        private async void StartJumping()
-        {
-            velocity = 0;
-
-            while (!isGameOver)
+            if (platforms.Count > 0)
             {
-                velocity += gravity;
-                characterY += velocity;
-
-                if (characterY < this.Height / 2)
-                {
-                    MovePlatformsDown(characterY - this.Height / 2);
-                    characterY = this.Height / 2;
-                }
-
-                Character.TranslationY = characterY;
-
-                CheckPlatformCollision();
-
-                if (platforms[0].TranslationY > this.Height)
-                {
-                    GeneratePlatformAbove();
-                }
-
-                if (characterY > this.Height + Character.Height)
-                {
-                    GameOver();
-                    break;
-                }
-
-                await Task.Delay(16);
+                var firstPlatform = platforms[0];
+                firstPlatform.TranslationX = (Width - firstPlatform.Width) / 2;
+                firstPlatform.TranslationY = Height - 200;
             }
         }
 
@@ -171,13 +189,16 @@ namespace Whisker_Jump
                 double platformTop = platform.TranslationY;
                 double platformBottom = platformTop + platform.Height;
                 double characterBottom = characterY + Character.Height;
+                double characterTop = characterY;
 
-                if (characterBottom >= platformTop && characterBottom <= platformBottom &&
+                if (characterBottom >= platformTop && characterTop <= platformBottom &&
                     characterX + Character.Width >= platform.TranslationX && characterX <= platform.TranslationX + platform.Width)
                 {
                     if (velocity > 0)
                     {
-                        velocity = jumpSpeed;
+                        velocity = 0;
+                        characterY = platformTop - Character.Height;
+                        isJumping = false;
                     }
                 }
             }
@@ -185,14 +206,15 @@ namespace Whisker_Jump
 
         private void MovePlatformsDown(double distance)
         {
-            foreach (var platform in platforms)
+            for (int i = platforms.Count - 1; i >= 0; i--)
             {
+                var platform = platforms[i];
                 platform.TranslationY += distance;
 
-                if (platform.TranslationY > this.Height)
+                if (platform.TranslationY > Height)
                 {
                     PlatformsLayout.Children.Remove(platform);
-                    platforms.Remove(platform);
+                    platforms.RemoveAt(i);
                     GeneratePlatformAbove();
                 }
             }
@@ -200,7 +222,7 @@ namespace Whisker_Jump
 
         private void GeneratePlatformAbove()
         {
-            double platformX = random.Next(0, (int)(this.Width - 150));
+            double platformX = random.Next(0, (int)(Width - 150));
             double platformY = -30;
 
             var platform = new BoxView
@@ -220,9 +242,12 @@ namespace Whisker_Jump
         private void GameOver()
         {
             isGameOver = true;
+            gameTimer?.Stop();
             DisplayAlert("Game Over", "You fell!", "OK");
             MainMenu.IsVisible = true;
             GameScreen.IsVisible = false;
+            highScore.Save((int)characterY);
+            HighScoreLabel.Text = highScore.Value.ToString();
             ResetGame();
         }
 

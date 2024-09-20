@@ -28,14 +28,6 @@ namespace Whisker_Jump.Models
             }
         }
 
-        public void Break()
-        {
-            if (Type == "breaking")
-            {
-                IsActive = false;
-            }
-        }
-
         public void Update()
         {
             if (Type == "moving")

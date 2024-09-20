@@ -3,7 +3,6 @@
              x:Class="Whisker_Jump.MainPage"
              BackgroundColor="#F5DEB3">
     <Grid x:Name="MainGrid">
-        <!-- Background Image -->
         <Image Source="Resources/Images/main_background.png"
                Aspect="AspectFit"
                VerticalOptions="End"
@@ -12,53 +11,39 @@
                WidthRequest="410"
                Opacity="1"/>
 
-        <!-- Platforms (Game platforms will be added dynamically here) -->
         <AbsoluteLayout x:Name="PlatformsLayout" VerticalOptions="FillAndExpand" />
 
-        <!-- Main Menu Layout -->
         <VerticalStackLayout x:Name="MainMenu" IsVisible="True">
-            <!-- Top Bar -->
             <Grid Padding="10" VerticalOptions="Start">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <!-- Coins and Count -->
                 <HorizontalStackLayout Grid.Column="0">
                     <Image Source="Resources/Images/fishies.png" HeightRequest="50" WidthRequest="50" Margin="10,-20,0,0" />
                     <Label x:Name="CoinCountLabel" VerticalOptions="Center" FontSize="35" Margin="5,-16,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold"/>
                 </HorizontalStackLayout>
-                <!-- Settings Button -->
                 <ImageButton Source="Resources/Buttons/settings_button.png" Grid.Column="1" HeightRequest="100" WidthRequest="100" VerticalOptions="End" HorizontalOptions="End" Clicked="SettingsButtonClicked" Margin="0,10,10,0"/>
             </Grid>
 
-            <!-- Game Title -->
             <Image Source="Resources/Buttons/main_title.png" HorizontalOptions="Center" Margin="0,-20,70,0" HeightRequest="125"/>
 
-            <!-- Play Button -->
             <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <ImageButton Source="Resources/Buttons/play_button.png" HeightRequest="115" WidthRequest="115" Clicked="PlayButtonClicked" Margin="30,110,0,0"/>
             </VerticalStackLayout>
 
-            <!-- Highscore and Shop (Buttons near the bottom) -->
             <Grid Padding="10" VerticalOptions="EndAndExpand" Margin="0,70,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-
-                <!-- Highscore -->
                 <Label Text="Highscore:" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="30,100,0,0" TextColor="Black" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
-                <Label Text="1204250" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="35,130,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
-                <!-- Shop Button -->
+                <Label x:Name="HighScoreLabel" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="35,130,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
                 <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="120" WidthRequest="120" HorizontalOptions="End" Clicked="ShopButtonClicked" Margin="0,100,10,0" Rotation="-5"/>
             </Grid>
         </VerticalStackLayout>
 
-        <!-- Game Screen Layout (Initially Hidden) -->
         <Grid x:Name="GameScreen" IsVisible="False">
-
-            <!-- Joystick (Replaced with BoxView) -->
             <Grid HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,20">
                 <BoxView x:Name="Joystick" Color="Gray" WidthRequest="100" HeightRequest="100" CornerRadius="50"/>
             </Grid>

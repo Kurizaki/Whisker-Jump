@@ -2,7 +2,7 @@
 {
     public class HighScore
     {
-        public int Value { get; set; }
+        public int Value { get; private set; }
 
         public HighScore()
         {
@@ -18,10 +18,9 @@
             }
         }
 
-        public int Load()
+        private int Load()
         {
-            //return the high score from storage
-            return 0;
+            return Preferences.Get("HighScore", 0);
         }
     }
 }
