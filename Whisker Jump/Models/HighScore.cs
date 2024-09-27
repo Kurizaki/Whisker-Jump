@@ -2,7 +2,8 @@
 {
     public class HighScore
     {
-        public int Value { get; private set; }
+        public int Value { get;  set; }
+
 
         public HighScore()
         {

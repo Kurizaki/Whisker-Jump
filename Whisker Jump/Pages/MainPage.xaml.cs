@@ -25,8 +25,6 @@ namespace Whisker_Jump
         private const double PlatformSpacing = 150;
         private readonly HighScore highScore;
         private IDispatcherTimer? gameTimer;
-        private bool isSettingsclicked = false;
-        private bool isShopclicked = false;
         private SettingsPage? settingsPageInstance = null;
         private ShopPage? shopPageInstance = null;
         private bool isNavigatingToSettings = false;
@@ -44,7 +42,7 @@ namespace Whisker_Jump
         private void InitializeGameTimer()
         {
             gameTimer = Dispatcher.CreateTimer();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(16); 
             gameTimer.Tick += OnGameTick;
         }
 
@@ -54,6 +52,7 @@ namespace Whisker_Jump
             {
                 UpdateCharacterPosition();
                 CheckPlatformCollision();
+                UpdateScore();
             }
         }
 
@@ -64,24 +63,34 @@ namespace Whisker_Jump
 
             if (characterY < Height / 2)
             {
-                MovePlatformsDown(characterY - Height / 2);
-                characterY = Height / 2;
+                MovePlatformsDown(Height / 2 - characterY); 
+                characterY = Height / 2; 
             }
 
             Character.TranslationY = characterY;
+            Character.TranslationX = characterX; 
 
             if (characterY > Height + Character.Height)
             {
                 GameOver();
             }
+
+            if (!isJumping && velocity >= 0)
+            {
+                isJumping = true;
+                velocity = JumpSpeed;
+            }
         }
+
+
 
         private void InitializeJoystick()
         {
             var panGesture = new PanGestureRecognizer();
-            panGesture.PanUpdated += OnJoystickPanUpdated!;
-            Joystick.GestureRecognizers.Add(panGesture);
+            panGesture.PanUpdated += OnJoystickPanUpdated!; 
+            Joystick.GestureRecognizers.Add(panGesture); 
         }
+
 
         private void OnJoystickPanUpdated(object? sender, PanUpdatedEventArgs e)
         {
@@ -95,8 +104,8 @@ namespace Whisker_Jump
             {
                 characterX += e.TotalX * JoystickSensitivity / 100;
 
-                if (characterX < 0) characterX = Width;
-                if (characterX > Width) characterX = 0;
+                if (characterX < 0) characterX = 0;
+                if (characterX > Width - Character.Width) characterX = Width - Character.Width;
 
                 Character.TranslationX = characterX;
             }
@@ -104,9 +113,10 @@ namespace Whisker_Jump
             if (isGameStarted && e.StatusType == GestureStatus.Completed && !isJumping)
             {
                 isJumping = true;
-                velocity = JumpSpeed;
+                velocity = JumpSpeed; 
             }
         }
+
 
         private void PlayButtonClicked(object sender, EventArgs args)
         {
@@ -126,24 +136,23 @@ namespace Whisker_Jump
             {
                 Color = Colors.Red,
                 WidthRequest = 80,
-                HeightRequest = 100
+                HeightRequest = 80,
+                CornerRadius = 40, 
+                BackgroundColor = Colors.Transparent 
             };
 
-            if (platforms.Count > 0)
-            {
-                var firstPlatform = platforms[0];
+            characterX = (Width - Character.WidthRequest) / 2;
+            characterY = (Height - Character.HeightRequest) / 5;
 
-                characterX = firstPlatform.TranslationX + (firstPlatform.Width - Character.Width) / 2;
-                characterY = firstPlatform.TranslationY - Character.Height;
+            velocity = 0;
 
-                velocity = 0;
+            AbsoluteLayout.SetLayoutBounds(Character, new Rect(characterX, characterY, 80, 80));
+            AbsoluteLayout.SetLayoutFlags(Character, AbsoluteLayoutFlags.None);
 
-                AbsoluteLayout.SetLayoutBounds(Character, new Rect(characterX, characterY, 80, 100));
-                AbsoluteLayout.SetLayoutFlags(Character, AbsoluteLayoutFlags.None);
-
-                PlatformsLayout.Children.Add(Character);
-            }
+            PlatformsLayout.Children.Add(Character);
         }
+
+
 
         private void ResetGame()
         {
@@ -164,7 +173,7 @@ namespace Whisker_Jump
             for (int i = 0; i < PlatformCount; i++)
             {
                 double platformX = random.Next(0, (int)(Width - 150));
-                double platformY = Height - (i * PlatformSpacing) - 100;
+                double platformY = Height - (i * PlatformSpacing) - 200;
 
                 var platform = new BoxView
                 {
@@ -184,9 +193,10 @@ namespace Whisker_Jump
             {
                 var firstPlatform = platforms[0];
                 firstPlatform.TranslationX = (Width - firstPlatform.Width) / 2;
-                firstPlatform.TranslationY = Height - 200;
+                firstPlatform.TranslationY = Height - 300;  
             }
         }
+
 
         private void CheckPlatformCollision()
         {
@@ -257,6 +267,14 @@ namespace Whisker_Jump
             ResetGame();
         }
 
+        private void UpdateScore()
+        {
+            if (characterY > highScore.Value)
+            {
+                highScore.Value = (int)characterY; 
+                HighScoreLabel.Text = highScore.Value.ToString();
+            }
+        }
 
         private async void SettingsButtonClicked(object sender, EventArgs args)
         {
@@ -272,15 +290,9 @@ namespace Whisker_Jump
                     settingsPageInstance = new SettingsPage();
                 }
 
-                if (!isSettingsclicked && !Navigation.NavigationStack.Contains(settingsPageInstance))
+                if (!Navigation.NavigationStack.Contains(settingsPageInstance))
                 {
                     await Navigation.PushAsync(settingsPageInstance);
-                    isSettingsclicked = true;
-                }
-                else if (isSettingsclicked)
-                {
-                    await Navigation.PopAsync();
-                    isSettingsclicked = false;
                 }
             }
             catch (Exception ex)
@@ -292,7 +304,6 @@ namespace Whisker_Jump
                 isNavigatingToSettings = false;
             }
         }
-
 
         private async void ShopButtonClicked(object sender, EventArgs args)
         {
