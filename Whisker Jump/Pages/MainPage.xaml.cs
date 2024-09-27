@@ -42,7 +42,7 @@ namespace Whisker_Jump
         private void InitializeGameTimer()
         {
             gameTimer = Dispatcher.CreateTimer();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(16); 
+            gameTimer.Interval = TimeSpan.FromMilliseconds(16);
             gameTimer.Tick += OnGameTick;
         }
 
@@ -63,12 +63,12 @@ namespace Whisker_Jump
 
             if (characterY < Height / 2)
             {
-                MovePlatformsDown(Height / 2 - characterY); 
-                characterY = Height / 2; 
+                MovePlatformsDown(Height / 2 - characterY);
+                characterY = Height / 2;
             }
 
             Character.TranslationY = characterY;
-            Character.TranslationX = characterX; 
+            Character.TranslationX = characterX;
 
             if (characterY > Height + Character.Height)
             {
@@ -82,15 +82,12 @@ namespace Whisker_Jump
             }
         }
 
-
-
         private void InitializeJoystick()
         {
             var panGesture = new PanGestureRecognizer();
-            panGesture.PanUpdated += OnJoystickPanUpdated!; 
-            Joystick.GestureRecognizers.Add(panGesture); 
+            panGesture.PanUpdated += OnJoystickPanUpdated!;
+            Joystick.GestureRecognizers.Add(panGesture);
         }
-
 
         private void OnJoystickPanUpdated(object? sender, PanUpdatedEventArgs e)
         {
@@ -104,16 +101,17 @@ namespace Whisker_Jump
             {
                 characterX += e.TotalX * JoystickSensitivity / 100;
 
-                if (characterX < 0) characterX = 0;
-                if (characterX > Width - Character.Width) characterX = Width - Character.Width;
+                if (characterX < 0)
+                {
+                    characterX = 0;
+                }
+
+                if (characterX > Width - Character.WidthRequest)
+                {
+                    characterX = Width - Character.WidthRequest;
+                }
 
                 Character.TranslationX = characterX;
-            }
-
-            if (isGameStarted && e.StatusType == GestureStatus.Completed && !isJumping)
-            {
-                isJumping = true;
-                velocity = JumpSpeed; 
             }
         }
 
@@ -137,8 +135,8 @@ namespace Whisker_Jump
                 Color = Colors.Red,
                 WidthRequest = 80,
                 HeightRequest = 80,
-                CornerRadius = 40, 
-                BackgroundColor = Colors.Transparent 
+                CornerRadius = 40,
+                BackgroundColor = Colors.Transparent
             };
 
             characterX = (Width - Character.WidthRequest) / 2;
@@ -151,8 +149,6 @@ namespace Whisker_Jump
 
             PlatformsLayout.Children.Add(Character);
         }
-
-
 
         private void ResetGame()
         {
@@ -193,10 +189,9 @@ namespace Whisker_Jump
             {
                 var firstPlatform = platforms[0];
                 firstPlatform.TranslationX = (Width - firstPlatform.Width) / 2;
-                firstPlatform.TranslationY = Height - 300;  
+                firstPlatform.TranslationY = Height - 300;
             }
         }
-
 
         private void CheckPlatformCollision()
         {
@@ -271,7 +266,7 @@ namespace Whisker_Jump
         {
             if (characterY > highScore.Value)
             {
-                highScore.Value = (int)characterY; 
+                highScore.Value = (int)characterY;
                 HighScoreLabel.Text = highScore.Value.ToString();
             }
         }
