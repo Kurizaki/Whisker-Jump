@@ -98,19 +98,19 @@ The work packages have been created in a way that if one person isn’t able to 
 | 1.B  | 6.09.24  | Keanu            | 180'         | 180'                  |
 | 2.A  | 6.09.24  | Keanu & Lorenzo  | 60'          | still working on it    |
 | 2.B  | 6.09.24  | Keanu & Lorenzo  | 200'         | still working on       |
-| 3.A  | 6.09.24  | -                | 30'          |                       |
-| 3.B  | 13.09.24 | -                | 60'          |                       |
-| 4.A  | 13.09.24 | -                | 15'          |                       |
-| 4.B  | 13.09.24 | -                | 45'          |                       |
-| 4.C  | 13.09.24 | -                | 120'         |                       |
-| 4.D  | 13.09.24 | -                | 180'         |                       |
-| 5.A  | 20.09.24 | -                | 30'          |                       |
-| 6.A  | 20.09.24 | -                | 180'         |                       |
-| 6.B  | 20.09.24 | -                | 300'         |                       |
-| 6.C  | 20.09.24 | -                | 240'         |                       |
+| 3.A  | 6.09.24  | -                | 30'          | 30'                      |
+| 3.B  | 13.09.24 | -                | 60'          |still working on it|
+| 4.A  | 13.09.24 | -                | 15'          |  15'                      |
+| 4.B  | 13.09.24 | -                | 45'          |  45'                      |
+| 4.C  | 13.09.24 | -                | 120'         |still working on it|
+| 4.D  | 13.09.24 | -                | 180'         |still working on it|
+| 5.A  | 20.09.24 | -                | 30'          |   30'                      |
+| 6.A  | 20.09.24 | -                | 180'         |still working on it|
+| 6.B  | 20.09.24 | -                | 300'         |still working on it|
+| 6.C  | 20.09.24 | -                | 240'         |still working on it|
 | 7.A  | When finished | -           | ?            |                       |
-| 8.A  | 27.09.24 | -                | 60'          |                       |
-| 9.A  | 27.09.24 | -                | 180'         |                       |
+| 8.A  | 27.09.24 | -                | 60'          |still working on it|
+| 9.A  | 27.09.24 | -                | 180'         |still working on it|
 
 
 ✍️ Each time you complete a work package, record how long it actually took.
