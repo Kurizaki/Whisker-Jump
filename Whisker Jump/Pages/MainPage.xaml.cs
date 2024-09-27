@@ -25,6 +25,12 @@ namespace Whisker_Jump
         private const double PlatformSpacing = 150;
         private readonly HighScore highScore;
         private IDispatcherTimer? gameTimer;
+        private bool isSettingsclicked = false;
+        private bool isShopclicked = false;
+        private SettingsPage? settingsPageInstance = null;
+        private ShopPage? shopPageInstance = null;
+        private bool isNavigatingToSettings = false;
+        private bool isNavigatingToShop = false;
 
         public MainPage()
         {
@@ -251,14 +257,70 @@ namespace Whisker_Jump
             ResetGame();
         }
 
+
         private async void SettingsButtonClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            if (isNavigatingToSettings)
+                return;
+
+            isNavigatingToSettings = true;
+
+            try
+            {
+                if (settingsPageInstance == null)
+                {
+                    settingsPageInstance = new SettingsPage();
+                }
+
+                if (!isSettingsclicked && !Navigation.NavigationStack.Contains(settingsPageInstance))
+                {
+                    await Navigation.PushAsync(settingsPageInstance);
+                    isSettingsclicked = true;
+                }
+                else if (isSettingsclicked)
+                {
+                    await Navigation.PopAsync();
+                    isSettingsclicked = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                isNavigatingToSettings = false;
+            }
         }
+
 
         private async void ShopButtonClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new ShopPage());
+            if (isNavigatingToShop)
+                return;
+
+            isNavigatingToShop = true;
+
+            try
+            {
+                if (shopPageInstance == null)
+                {
+                    shopPageInstance = new ShopPage();
+                }
+
+                if (!Navigation.NavigationStack.Contains(shopPageInstance))
+                {
+                    await Navigation.PushAsync(shopPageInstance);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                isNavigatingToShop = false;
+            }
         }
     }
 }

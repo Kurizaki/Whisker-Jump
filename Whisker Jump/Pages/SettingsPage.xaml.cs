@@ -9,8 +9,9 @@ namespace Whisker_Jump.Pages
 
         private async void OnBackButtonClicked(object sender, EventArgs e)
         {
-            // Navigate back to MainMenu.xaml
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PopAsync();
         }
+
+
     }
 }
