@@ -9,8 +9,8 @@ Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
 |  30.08.24    | 0.0.2   | We made a Figma about our project and started to recreate the design of it in MAUI. The game logic hasn't been touched yet.   |
 |  06.09.24    | 0.0.3   | Today, we changed the Figma to better suit our program. We made a Use-Case of our program. We started to work on the logic behind the platforms and the buttons.   |
 |  13.09.24    | 0.1.0   | Today we started to implement the logic for the platforms by adding sprites and movement.                                                         |
-|  20.09.24    | 0.1.1   | Today, we are still implementing the logic for the platforms and the charachter movement, as this is the biggest part of the project.                                                         |
-|      | ...     |                                                          |
+|  20.09.24    | 0.1.1   | Today, we are still implementing the logic for the platforms and the charachter movement, as this is the biggest part of the project.        |
+|  27.09.24    | 0.1.2   | Today, we are fixing the game logic and game loop for the platforms and the character which is a crucial part of this project.                      |
 |      | ...     |                                                          |
 
 ## 1. Information
@@ -92,10 +92,14 @@ The work packages have been created in a way that if one person isn’t able to 
 
 ## 4. Implementation
 
-| AP-№ | Date  | Responsible | Planned Time | Actual Time   |
-| ---- | ----- | ----------- | ------------ | ------------- |
-| 1.A  |       |             |              |               |
-| ...  |       |             |              |               |
+| AP-№ | Date     | Responsible | Planned Time | Actual Time   |
+| ---- | -----    | ----------- | ------------ | ------------- |
+| 1.A  | 6.09.24  |Keanu      |45'           |45'         |
+| 1.B  | 6.09.24  |Keanu      |180'          |180'        |
+| 2.A  | 6.09.24  |Keanu & Lorenzo  |60'     |still working on it   |
+| 2.B  | 6.09.24  |Keanu & Lorenzo  |200'    |still working on |
+| 3.A  | 6.09.24  |             |              |               |
+| 3.B  | 13.09.24 |             |              |               |
 
 ✍️ Each time you complete a work package, record how long it actually took.
 
