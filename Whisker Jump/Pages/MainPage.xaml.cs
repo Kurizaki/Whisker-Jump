@@ -197,6 +197,8 @@ namespace Whisker_Jump
             }
         }
 
+        private const int MaxPlatformCount = 10;
+
         private void MovePlatformsDown(double distance)
         {
             for (int i = platforms.Count - 1; i >= 0; i--)
@@ -208,35 +210,89 @@ namespace Whisker_Jump
                 {
                     PlatformsLayout.Children.Remove(platform);
                     platforms.RemoveAt(i);
-                    GeneratePlatformAbove();
                 }
+            }
+
+            if (platforms.Count < MaxPlatformCount)
+            {
+                GeneratePlatformAboveIfNeeded();
+            }
+        }
+
+        private void GeneratePlatformAboveIfNeeded()
+        {
+            if (platforms.Count == 0 || (platforms[^1].TranslationY > PlatformSpacing && platforms.Count < MaxPlatformCount))
+            {
+                GeneratePlatformAbove();
             }
         }
 
         private void GeneratePlatformAbove()
         {
-            double platformX = random.Next(0, (int)(Width - 150));
-            double platformY = -30;
+            bool platformPlaced = false;
+            int maxAttempts = 10;
+            int attempts = 0;
 
-            var platform = new BoxView
+            while (!platformPlaced && attempts < maxAttempts)
             {
-                Color = Colors.SaddleBrown,
-                WidthRequest = 150,
-                HeightRequest = 30
-            };
+                attempts++;
 
-            AbsoluteLayout.SetLayoutBounds(platform, new Rect(platformX, platformY, 150, 30));
-            AbsoluteLayout.SetLayoutFlags(platform, AbsoluteLayoutFlags.None);
+                double platformWidth = random.Next(100, 200);
+                double platformX = random.Next(0, (int)(Width - platformWidth));
+                double platformY = -30;
 
-            PlatformsLayout.Children.Add(platform);
-            platforms.Add(platform);
+                bool overlaps = false;
+
+                foreach (var existingPlatform in platforms)
+                {
+                    double existingPlatformTop = existingPlatform.TranslationY;
+                    double existingPlatformBottom = existingPlatformTop + existingPlatform.Height;
+                    double existingPlatformLeft = existingPlatform.TranslationX;
+                    double existingPlatformRight = existingPlatformLeft + existingPlatform.Width;
+
+                    double newPlatformTop = platformY;
+                    double newPlatformBottom = platformY + 30;
+                    double newPlatformLeft = platformX;
+                    double newPlatformRight = platformX + platformWidth;
+
+                    if (!(newPlatformRight < existingPlatformLeft || newPlatformLeft > existingPlatformRight ||
+                          newPlatformBottom < existingPlatformTop || newPlatformTop > existingPlatformBottom))
+                    {
+                        overlaps = true;
+                        break;
+                    }
+                }
+
+                if (!overlaps)
+                {
+                    var platform = new BoxView
+                    {
+                        Color = Colors.SaddleBrown,
+                        WidthRequest = platformWidth,
+                        HeightRequest = 30
+                    };
+
+                    AbsoluteLayout.SetLayoutBounds(platform, new Rect(platformX, platformY, platformWidth, 30));
+                    AbsoluteLayout.SetLayoutFlags(platform, AbsoluteLayoutFlags.None);
+
+                    PlatformsLayout.Children.Add(platform);
+                    platforms.Add(platform);
+                    platformPlaced = true;
+                }
+            }
+
+            RemoveOldPlatforms();
         }
 
-        private void GeneratePlatformAboveIfNeeded()
+        private void RemoveOldPlatforms()
         {
-            if (platforms.Count > 0 && platforms[^1].TranslationY > PlatformSpacing)
+            for (int i = platforms.Count - 1; i >= 0; i--)
             {
-                GeneratePlatformAbove();
+                if (platforms[i].TranslationY > Height)
+                {
+                    PlatformsLayout.Children.Remove(platforms[i]);
+                    platforms.RemoveAt(i);
+                }
             }
         }
 
