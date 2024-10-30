@@ -53,6 +53,7 @@ namespace Whisker_Jump
                 UpdateCharacterPosition();
                 CheckPlatformCollision();
                 UpdateScore();
+                GeneratePlatformAboveIfNeeded();
             }
         }
 
@@ -100,21 +101,9 @@ namespace Whisker_Jump
             if (isGameStarted && e.StatusType == GestureStatus.Running)
             {
                 characterX += e.TotalX * JoystickSensitivity / 100;
-
-                if (characterX < 0)
-                {
-                    characterX = 0;
-                }
-
-                if (characterX > Width - Character.WidthRequest)
-                {
-                    characterX = Width - Character.WidthRequest;
-                }
-
                 Character.TranslationX = characterX;
             }
         }
-
 
         private void PlayButtonClicked(object sender, EventArgs args)
         {
@@ -166,10 +155,11 @@ namespace Whisker_Jump
             platforms.Clear();
             PlatformsLayout.Children.Clear();
 
+            double previousPlatformY = Height - 200;
             for (int i = 0; i < PlatformCount; i++)
             {
                 double platformX = random.Next(0, (int)(Width - 150));
-                double platformY = Height - (i * PlatformSpacing) - 200;
+                double platformY = previousPlatformY - PlatformSpacing;
 
                 var platform = new BoxView
                 {
@@ -183,13 +173,8 @@ namespace Whisker_Jump
 
                 PlatformsLayout.Children.Add(platform);
                 platforms.Add(platform);
-            }
 
-            if (platforms.Count > 0)
-            {
-                var firstPlatform = platforms[0];
-                firstPlatform.TranslationX = (Width - firstPlatform.Width) / 2;
-                firstPlatform.TranslationY = Height - 300;
+                previousPlatformY = platformY;
             }
         }
 
@@ -202,15 +187,12 @@ namespace Whisker_Jump
                 double characterBottom = characterY + Character.Height;
                 double characterTop = characterY;
 
-                if (characterBottom >= platformTop && characterTop <= platformBottom &&
+                if (velocity > 0 && characterBottom >= platformTop && characterTop <= platformBottom &&
                     characterX + Character.Width >= platform.TranslationX && characterX <= platform.TranslationX + platform.Width)
                 {
-                    if (velocity > 0)
-                    {
-                        velocity = 0;
-                        characterY = platformTop - Character.Height;
-                        isJumping = false;
-                    }
+                    velocity = 0;
+                    characterY = platformTop - Character.Height;
+                    isJumping = false;
                 }
             }
         }
@@ -250,16 +232,27 @@ namespace Whisker_Jump
             platforms.Add(platform);
         }
 
+        private void GeneratePlatformAboveIfNeeded()
+        {
+            if (platforms.Count > 0 && platforms[^1].TranslationY > PlatformSpacing)
+            {
+                GeneratePlatformAbove();
+            }
+        }
+
         private void GameOver()
         {
-            isGameOver = true;
-            gameTimer?.Stop();
-            DisplayAlert("Game Over", "You fell!", "OK");
-            MainMenu.IsVisible = true;
-            GameScreen.IsVisible = false;
-            highScore.Save((int)characterY);
-            HighScoreLabel.Text = highScore.Value.ToString();
-            ResetGame();
+            if (!isGameOver)
+            {
+                isGameOver = true;
+                gameTimer?.Stop();
+                DisplayAlert("Game Over", "You fell!", "OK");
+                MainMenu.IsVisible = true;
+                GameScreen.IsVisible = false;
+                highScore.Save((int)characterY);
+                HighScoreLabel.Text = highScore.Value.ToString();
+                ResetGame();
+            }
         }
 
         private void UpdateScore()
@@ -270,7 +263,6 @@ namespace Whisker_Jump
                 HighScoreLabel.Text = highScore.Value.ToString();
             }
         }
-
         private async void SettingsButtonClicked(object sender, EventArgs args)
         {
             if (isNavigatingToSettings)
