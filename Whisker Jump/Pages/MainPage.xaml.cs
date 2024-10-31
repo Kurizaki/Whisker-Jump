@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using Whisker_Jump.Models;
 using Microsoft.Maui.Layouts;
 using Whisker_Jump.Pages;
+using Plugin.Maui.Audio;
+using System.IO;
 
 namespace Whisker_Jump
 {
     public partial class MainPage : ContentPage
     {
+        private readonly IAudioManager _audioManager;
+        private IAudioPlayer? _audioPlayer;
+
         private double characterY;
         private double characterX;
         private const double JumpSpeed = -15;
@@ -30,8 +35,14 @@ namespace Whisker_Jump
         private bool isNavigatingToSettings = false;
         private bool isNavigatingToShop = false;
 
-        public MainPage()
+        // Parameterloser Konstruktor
+        public MainPage() : this(new AudioManager())
         {
+        }
+
+        public MainPage(IAudioManager audioManager)
+        {
+            _audioManager = audioManager;
             InitializeComponent();
             InitializeJoystick();
             highScore = new HighScore();
@@ -105,7 +116,7 @@ namespace Whisker_Jump
             }
         }
 
-        private void PlayButtonClicked(object sender, EventArgs args)
+        private async void PlayButtonClicked(object sender, EventArgs args)
         {
             MainMenu.IsVisible = false;
             GameScreen.IsVisible = true;
@@ -115,6 +126,7 @@ namespace Whisker_Jump
             GenerateInitialPlatforms();
             CreateCharacter();
             gameTimer?.Start();
+            await PlayMusic();
         }
 
         private void CreateCharacter()
@@ -308,6 +320,7 @@ namespace Whisker_Jump
                 highScore.Save((int)characterY);
                 HighScoreLabel.Text = highScore.Value.ToString();
                 ResetGame();
+                StopMusic();
             }
         }
 
@@ -375,6 +388,33 @@ namespace Whisker_Jump
             {
                 isNavigatingToShop = false;
             }
+        }
+        public async Task PlayMusic()
+        {
+            try
+            {
+                var filePath = Path.Combine(FileSystem.AppDataDirectory, "WhiskerJump.mp3");
+                if (!File.Exists(filePath))
+                {
+                    using var stream = await FileSystem.OpenAppPackageFileAsync("Resources/Music/WhiskerJump.mp3");
+                    using var fileStream = File.Create(filePath);
+                    await stream.CopyToAsync(fileStream);
+                }
+
+                _audioPlayer = _audioManager.CreatePlayer(filePath);
+                _audioPlayer.Loop = true;
+                _audioPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error playing music: {ex.Message}");
+            }
+        }
+
+
+        public void StopMusic()
+        {
+            _audioPlayer?.Stop();
         }
     }
 }

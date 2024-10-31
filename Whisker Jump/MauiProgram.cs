@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 
 namespace Whisker_Jump
 {
@@ -19,7 +20,7 @@ namespace Whisker_Jump
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton(AudioManager.Current);
             return builder.Build();
         }
     }
