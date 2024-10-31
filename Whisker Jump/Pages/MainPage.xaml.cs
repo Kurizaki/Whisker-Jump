@@ -24,6 +24,7 @@ namespace Whisker_Jump
         private const int PlatformCount = 6;
         private const double PlatformSpacing = 150;
         private readonly HighScore highScore;
+        private int sessionHighScore; // tracking session HS
         private IDispatcherTimer? gameTimer;
         private IDispatcherTimer? highScoreTimer;
         private SettingsPage? settingsPageInstance = null;
@@ -42,19 +43,25 @@ namespace Whisker_Jump
             _audioManager = audioManager;
             InitializeComponent();
             InitializeJoystick();
+
             highScore = new HighScore();
+            sessionHighScore = 0; // Initialize session high score to 0
             LoadHighScore();
             MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
+
             InitializeGameTimer();
             InitializeHighScoreTimer();
         }
 
         private void LoadHighScore()
         {
-            highScore.Value = highScore.Load();
-            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
-            HighScoreCounter.Text = highScore.Value.ToString(); // Update the highscore counter
+            highScore.Value = highScore.Load(); // Load the all-time high score from storage
+            sessionHighScore = 0; // Reset session high score at the start of a new session
+            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Display all-time high score on main menu
+            GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Display on the game screen
+            HighScoreCounter.Text = sessionHighScore.ToString(); // Initialize session score display to 0
         }
+
 
         private void InitializeGameTimer()
         {
@@ -84,18 +91,25 @@ namespace Whisker_Jump
         {
             if (!isGameOver && isGameStarted)
             {
-                currentScore += 100;
-                ScoreLabel.Text = $"Score: {currentScore}"; // Update the score label
+                currentScore += 100; // Increase score as needed
+                ScoreLabel.Text = $"Score: {currentScore}"; // Display the current score on the screen
 
-                if (currentScore > highScore.Value)
+                // Check if the current score beats the session high score
+                if (currentScore > sessionHighScore)
                 {
-                    highScore.Value = currentScore;
-                    highScore.Save(highScore.Value);
-                    GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}";
-                    HighScoreCounter.Text = highScore.Value.ToString();
+                    sessionHighScore = currentScore;
+                    HighScoreCounter.Text = sessionHighScore.ToString(); // Update session high score display
+                }
+
+                // Update all-time high score if session high score exceeds it
+                if (sessionHighScore > highScore.Value)
+                {
+                    highScore.Save(sessionHighScore); // Save the new all-time high score to persistent storage
+                    GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Update high score on game screen
                 }
             }
         }
+
 
         private void UpdateCharacterPosition()
         {
@@ -352,14 +366,13 @@ namespace Whisker_Jump
                 highScoreTimer?.Stop();
                 DisplayAlert("Game Over", "You fell!", "OK");
 
-                // Update and save the high score
-                if (currentScore > highScore.Value)
+                // Check and save if current session score exceeds all-time high score
+                if (sessionHighScore > highScore.Value)
                 {
-                    highScore.Save(currentScore);
+                    highScore.Save(sessionHighScore);
                 }
 
-                // Load the saved high score to ensure it's correctly displayed
-                LoadHighScore();
+                LoadHighScore(); // Reload to update the displayed high scores
 
                 MainMenu.IsVisible = true;
                 GameScreen.IsVisible = false;
