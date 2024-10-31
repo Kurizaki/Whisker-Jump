@@ -1,11 +1,7 @@
-﻿using Microsoft.Maui.Controls;
-using Microsoft.Maui.Dispatching;
-using System.Collections.Generic;
-using Whisker_Jump.Models;
-using Microsoft.Maui.Layouts;
-using Whisker_Jump.Pages;
+﻿using Microsoft.Maui.Layouts;
 using Plugin.Maui.Audio;
-using System.IO;
+using Whisker_Jump.Models; // Import für HighScore
+using Whisker_Jump.Pages; // Import für SettingsPage und ShopPage
 
 namespace Whisker_Jump
 {
@@ -13,7 +9,6 @@ namespace Whisker_Jump
     {
         private readonly IAudioManager _audioManager;
         private IAudioPlayer? _audioPlayer;
-
         private double characterY;
         private double characterX;
         private const double JumpSpeed = -15;
@@ -30,10 +25,12 @@ namespace Whisker_Jump
         private const double PlatformSpacing = 150;
         private readonly HighScore highScore;
         private IDispatcherTimer? gameTimer;
+        private IDispatcherTimer? highScoreTimer;
         private SettingsPage? settingsPageInstance = null;
         private ShopPage? shopPageInstance = null;
         private bool isNavigatingToSettings = false;
         private bool isNavigatingToShop = false;
+        private int currentScore;
 
         // Parameterloser Konstruktor
         public MainPage() : this(new AudioManager())
@@ -46,8 +43,17 @@ namespace Whisker_Jump
             InitializeComponent();
             InitializeJoystick();
             highScore = new HighScore();
-            HighScoreLabel.Text = highScore.Value.ToString();
+            LoadHighScore();
+            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
             InitializeGameTimer();
+            InitializeHighScoreTimer();
+        }
+
+        private void LoadHighScore()
+        {
+            highScore.Value = highScore.Load();
+            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
+            HighScoreCounter.Text = highScore.Value.ToString(); // Update the highscore counter
         }
 
         private void InitializeGameTimer()
@@ -57,14 +63,37 @@ namespace Whisker_Jump
             gameTimer.Tick += OnGameTick;
         }
 
+        private void InitializeHighScoreTimer()
+        {
+            highScoreTimer = Dispatcher.CreateTimer();
+            highScoreTimer.Interval = TimeSpan.FromSeconds(2);
+            highScoreTimer.Tick += OnHighScoreTick;
+        }
+
         private void OnGameTick(object? sender, EventArgs e)
         {
             if (!isGameOver)
             {
                 UpdateCharacterPosition();
                 CheckPlatformCollision();
-                UpdateScore();
                 GeneratePlatformAboveIfNeeded();
+            }
+        }
+
+        private void OnHighScoreTick(object? sender, EventArgs e)
+        {
+            if (!isGameOver && isGameStarted)
+            {
+                currentScore += 100;
+                ScoreLabel.Text = $"Score: {currentScore}"; // Update the score label
+
+                if (currentScore > highScore.Value)
+                {
+                    highScore.Value = currentScore;
+                    highScore.Save(highScore.Value);
+                    GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}";
+                    HighScoreCounter.Text = highScore.Value.ToString();
+                }
             }
         }
 
@@ -107,6 +136,7 @@ namespace Whisker_Jump
             {
                 isGameStarted = true;
                 gameTimer?.Start();
+                highScoreTimer?.Start();
             }
 
             if (isGameStarted && e.StatusType == GestureStatus.Running)
@@ -126,7 +156,10 @@ namespace Whisker_Jump
             GenerateInitialPlatforms();
             CreateCharacter();
             gameTimer?.Start();
+            highScoreTimer?.Start();
             await PlayMusic();
+
+            ScoreLabel.Text = "Score: 0"; // Reset the score label
         }
 
         private void CreateCharacter()
@@ -160,6 +193,8 @@ namespace Whisker_Jump
             characterX = 0;
             platforms.Clear();
             PlatformsLayout.Children.Clear();
+            currentScore = 0; // Reset the current score
+            ScoreLabel.Text = "Score: 0"; // Reset the score label
         }
 
         private void GenerateInitialPlatforms()
@@ -314,24 +349,26 @@ namespace Whisker_Jump
             {
                 isGameOver = true;
                 gameTimer?.Stop();
+                highScoreTimer?.Stop();
                 DisplayAlert("Game Over", "You fell!", "OK");
+
+                // Update and save the high score
+                if (currentScore > highScore.Value)
+                {
+                    highScore.Save(currentScore);
+                }
+
+                // Load the saved high score to ensure it's correctly displayed
+                LoadHighScore();
+
                 MainMenu.IsVisible = true;
                 GameScreen.IsVisible = false;
-                highScore.Save((int)characterY);
-                HighScoreLabel.Text = highScore.Value.ToString();
                 ResetGame();
                 StopMusic();
             }
         }
 
-        private void UpdateScore()
-        {
-            if (characterY > highScore.Value)
-            {
-                highScore.Value = (int)characterY;
-                HighScoreLabel.Text = highScore.Value.ToString();
-            }
-        }
+
         private async void SettingsButtonClicked(object sender, EventArgs args)
         {
             if (isNavigatingToSettings)
@@ -389,6 +426,7 @@ namespace Whisker_Jump
                 isNavigatingToShop = false;
             }
         }
+
         public async Task PlayMusic()
         {
             try
@@ -411,10 +449,15 @@ namespace Whisker_Jump
             }
         }
 
-
         public void StopMusic()
         {
             _audioPlayer?.Stop();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            highScore.Save(currentScore);
         }
     }
 }

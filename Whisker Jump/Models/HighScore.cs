@@ -2,8 +2,7 @@
 {
     public class HighScore
     {
-        public int Value { get;  set; }
-
+        public int Value { get; set; }
 
         public HighScore()
         {
@@ -16,10 +15,11 @@
             {
                 Value = score;
                 Preferences.Set("HighScore", Value);
+                Console.WriteLine($"High Score Saved: {Value}");
             }
         }
 
-        private int Load()
+        public int Load()
         {
             return Preferences.Get("HighScore", 0);
         }

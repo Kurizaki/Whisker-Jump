@@ -38,15 +38,18 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Highscore:" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="30,100,0,0" TextColor="Black" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
-                <Label x:Name="HighScoreLabel" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="35,130,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
+                <Label x:Name="MainMenuHighScoreLabel" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="35,130,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
                 <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="120" WidthRequest="120" HorizontalOptions="End" Clicked="ShopButtonClicked" Margin="0,100,10,0" Rotation="-5"/>
             </Grid>
         </VerticalStackLayout>
 
         <Grid x:Name="GameScreen" IsVisible="False">
             <Grid HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,20">
+                <Label x:Name="GameScreenHighScoreLabel" Text="High Score: 0" AbsoluteLayout.LayoutBounds="0.5,0.1,0.5,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <Label x:Name="HighScoreCounter" Text="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.5,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="Center" VerticalOptions="Start"/>
                 <BoxView x:Name="Joystick" Color="Gray" WidthRequest="100" HeightRequest="100" CornerRadius="50"/>
             </Grid>
+            <Label x:Name="ScoreLabel" Text="Score: 0" FontSize="24" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Margin="10"/>
         </Grid>
     </Grid>
 </ContentPage>
