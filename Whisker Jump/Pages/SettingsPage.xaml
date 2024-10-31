@@ -20,10 +20,16 @@
                          HorizontalOptions="End"
                          Margin="0,0,10,0" />
             <Slider WidthRequest="150"
-                    VerticalOptions="Center"
-                    ThumbColor="#c68120"
-                    MinimumTrackColor="#c68120"
-                    MaximumTrackColor="#eeeeee"/>
+        VerticalOptions="Center"
+        ThumbColor="#c68120"
+        MinimumTrackColor="#c68120"
+        MaximumTrackColor="#eeeeee"
+        Minimum="0.0"
+        Maximum="5.0"
+        Value="0.5"
+        ValueChanged="OnVolumeSliderValueChanged"/>
+            <!--DA OBEN VON SLIDER BIS VALUECHANGED ISCH ANDERS-->
+                <!-- Attach the event handler -->
             <Image Source="volume_on.png"
                          HorizontalOptions="Start"
                          Margin="10,0,0,0" />

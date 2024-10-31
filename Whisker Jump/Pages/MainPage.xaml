@@ -37,8 +37,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Text="Highscore:" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="30,100,0,0" TextColor="Black" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
-                <Label x:Name="MainMenuHighScoreLabel" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="35,130,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
+                <Label x:Name="MainMenuHighScoreLabel" Grid.Column="0" FontSize="30" HorizontalOptions="Start" Margin="30,100,0,0" TextColor="#8E6815" FontFamily="TheGirlNextDoorRegular" FontAttributes="Bold" Rotation="-15"/>
                 <ImageButton Source="Resources/Buttons/shop_button.png" Grid.Column="1" HeightRequest="120" WidthRequest="120" HorizontalOptions="End" Clicked="ShopButtonClicked" Margin="0,100,10,0" Rotation="-5"/>
             </Grid>
         </VerticalStackLayout>

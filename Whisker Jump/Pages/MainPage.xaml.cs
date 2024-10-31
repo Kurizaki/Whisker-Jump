@@ -2,13 +2,14 @@
 using Plugin.Maui.Audio;
 using Whisker_Jump.Models; // Import für HighScore
 using Whisker_Jump.Pages; // Import für SettingsPage und ShopPage
+// HALLO, PUBLIC IAUDIOPLAYER? _AUDIOMANAGER; ? UND PUBLIC SIND NACHER IMPLEMENTIERT WORDE SUST GEHT NICHT FALLS NICHT PUBLIC YK YK? ZEILE 443 PLAY MUSIC AU NO ÄNDERTLOLOLOLOLOL
 
 namespace Whisker_Jump
 {
     public partial class MainPage : ContentPage
     {
         private readonly IAudioManager _audioManager;
-        private IAudioPlayer? _audioPlayer;
+        public IAudioPlayer? _audioPlayer;
         private double characterY;
         private double characterX;
         private const double JumpSpeed = -15;
@@ -381,7 +382,6 @@ namespace Whisker_Jump
             }
         }
 
-
         private async void SettingsButtonClicked(object sender, EventArgs args)
         {
             if (isNavigatingToSettings)
@@ -393,7 +393,7 @@ namespace Whisker_Jump
             {
                 if (settingsPageInstance == null)
                 {
-                    settingsPageInstance = new SettingsPage();
+                    settingsPageInstance = new SettingsPage(this); // Pass the current instance of MainPage
                 }
 
                 if (!Navigation.NavigationStack.Contains(settingsPageInstance))
@@ -454,7 +454,10 @@ namespace Whisker_Jump
 
                 _audioPlayer = _audioManager.CreatePlayer(filePath);
                 _audioPlayer.Loop = true;
-                _audioPlayer.Play();
+
+                // Set the volume to the current slider value or a default value
+                _audioPlayer.Volume = 0.5; // Set initial volume to 50% or use a variable if needed
+                _audioPlayer.Play(); // Start playback
             }
             catch (Exception ex)
             {
