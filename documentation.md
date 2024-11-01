@@ -1,7 +1,5 @@
 
 # Whisker Jump Project Documentation
-
-## Whisker Jump Team
 - **Lorenzo**
 - **Keanu**
 - **Dorian**
@@ -68,37 +66,37 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 
 | AP-№ | Deadline | Responsible | Description | Planned Time |
 |------|----------|-------------|-------------|--------------|
-| 1.A  | 6.09.24  | Keanu           | Add buttons at the screen bottom.                              | 45'           |
+| 1.A  | 6.09.24  | Keanu & Dorian           | Add buttons at the screen bottom.                              | 45'           |
 | 1.B  | 6.09.24  | Keanu           | Implement button-based character movement.                     | 180'          |
 | 2.A  | 6.09.24  | Keanu & Lorenzo           | Implement random platform logic with type distribution.        | 60'           |
 | 2.B  | 6.09.24  | Keanu & Lorenzo           | Add platform collision and interaction logic.                  | 200'          |
-| 3.A  | 6.09.24  | -           | Implement fish spawn on platforms every 5 seconds.             | 30'           |
-| 3.B  | 13.09.24 | -           | Player can collect fish during gameplay.                       | 60'           |
-| 4.A  | 13.09.24 | -           | Display collected fish amount.                                 | 15'           |
-| 4.B  | 13.09.24 | -           | Add button to access shop at game start.                       | 45'           |
-| 4.C  | 13.09.24 | -           | Enable purchases in shop using fish.                           | 120'          |
-| 4.D  | 13.09.24 | -           | Complete shop logic with collectible and purchasable items.    | 180'          |
-| 5.A  | 20.09.24 | Cyril        | Display high score post-game.                                  | 30'           |
-| 6.A  | 20.09.24 | -           | Ensure stationary platforms work correctly.                    | 180'          |
-| 6.B  | 20.09.24 | -           | Add moving, breakable, and one-time platforms.                 | 300'          |
+| 3.A  | 6.09.24  | Dorian | Implement fish spawn on platforms every 5 seconds.             | 30'           |
+| 3.B  | 13.09.24 | Keanu           | Player can collect fish during gameplay.                       | 60'           |
+| 4.A  | 13.09.24 | Lorenzo           | Display collected fish amount.                                 | 15'           |
+| 4.B  | 13.09.24 | Dorian & Cyril           | Add button to access shop at game start.                       | 45'           |
+| 4.C  | 13.09.24 | Dorian & Cyril           | Enable purchases in shop using fish.                           | 120'          |
+| 4.D  | 13.09.24 | Cyril           | Complete shop logic with collectible and purchasable items.    | 180'          |
+| 5.A  | 20.09.24 | Cyril & Lorenzo        | Display high score post-game.                                  | 30'           |
+| 6.A  | 20.09.24 | Dorian           | Ensure stationary platforms work correctly.                    | 180'          |
+| 6.B  | 20.09.24 | Dorian & Cyril           | Add moving, breakable, and one-time platforms.                 | 300'          |
 
 ## 4. Implementation
 
 | AP-№ | Date     | Responsible      | Planned Time | Actual Time     |
 |------|----------|------------------|--------------|-----------------|
-| 1.A  | 6.09.24  | Keanu            | 45'          | 45'            |
+| 1.A  | 6.09.24  | Keanu & Dorian            | 45'          | 45'            |
 | 1.B  | 6.09.24  | Keanu            | 180'         | 180'           |
-| 2.A  | 6.09.24  | Keanu & Lorenzo  | 60'          | In progress    |
-| 2.B  | 6.09.24  | Keanu & Lorenzo  | 200'         | In progress    |
-| 3.A  | 6.09.24  | -                | 30'          | 30'            |
-| 3.B  | 13.09.24 | -                | 60'          | In progress    |
-| 4.A  | 13.09.24 | -                | 15'          | 15'            |
-| 4.B  | 13.09.24 | -                | 45'          | 15'            |
-| 4.C  | 13.09.24 | -                | 120'          | 15'            |
-| 4.D  | 13.09.24 | -                | 180'          | 15'            |
-| 5.A  | 20.09.24 | Cyril            | 30'          |   30'          |
-| 6.A  | 20.09.24 | -                | 180'         |still working on it|
-| 6.B  | 20.09.24 | -                | 300'         |still working on it|
+| 2.A  | 6.09.24  | Keanu & Lorenzo  | 60'          | 210'    |
+| 2.B  | 6.09.24  | Keanu & Lorenzo  | 200'         | 400'    |
+| 3.A  | 6.09.24  | Dorian               | 30'          | not finished            |
+| 3.B  | 13.09.24 | Keanu                | 60'          | not finished    |
+| 4.A  | 13.09.24 | Lorenzo                | 15'          | not finished            |
+| 4.B  | 13.09.24 | Dorian & Cyril                | 45'          | 45'            |
+| 4.C  | 13.09.24 | Dorian & Cyril                | 120'          | not finished            |
+| 4.D  | 13.09.24 | Cyril                | 180'          | not finished            |
+| 5.A  | 20.09.24 | Cyril & lorenzo            | 30'          |   120'          |
+| 6.A  | 20.09.24 | Dorian                | 180'         |not finished|
+| 6.B  | 20.09.24 | Dorian & Cyril                | 300'         |not finished|
 
 ## 5. Test Report and Evaluation
 
@@ -117,8 +115,19 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 | 9    | Incomplete  | Skins unavailable in shop currently.                                   |
 | 10   | Pass        | Game operates on Android device.                                       |
 
+Because of unfinished implementation some of the tests couldn't be tested.
 
-## 6. Risk Analysis
+# 6. Evaluation
+
+Keanu: https://portfolio.bbbaden.ch/view/view.php?t=c9f294f7561e1b65c724
+
+Cyril: https://portfolio.bbbaden.ch/view/view.php?t=40fba60858e5d34ef948
+
+Lorenzo: 
+
+Dorian:
+
+### Risk Analysis
 
 - **New Tech Stack:** Learning curve for .NET MAUI, requiring extra time for UI and logic integration.
 - **Platform Generation Complexity:** Logic behind moving and breakable platforms is challenging.
@@ -127,15 +136,8 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 
 **Overall Project Risk:** Moderate – manageable with regular testing and team alignment.
 
-# 8. Things we didn't finish
+### Things we didn't finish
 
 - **Shop and Currency System**: The partial implementation of the shop and currency system presents a risk, as it requires additional time and testing to finalize the purchasing functionality.
 - **Collision Issues**: Collision problems with platforms may cause player frustration. This aspect requires focused debugging to ensure consistent gameplay.
 - **New Tech Stack**: Learning curve for .NET MAUI, requiring extra time for UI and logic integration.
-
-# Evaluation
-
-Keanu: https://portfolio.bbbaden.ch/view/view.php?t=c9f294f7561e1b65c724
-Cyril: https://portfolio.bbbaden.ch/view/view.php?t=40fba60858e5d34ef948
-Lorenzo: 
-Dorian:
