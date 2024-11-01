@@ -1,3 +1,4 @@
+
 # Whisker Jump Project Documentation
 
 ## Whisker Jump Team
@@ -15,6 +16,7 @@
 | 20.09.24 | 0.1.1   | Continued platform logic development and character movement.                                         |
 | 27.09.24 | 0.1.2   | Refined game logic and game loop for platforms and character movement.                               |
 | 01.11.24 | 0.2.0   | Added game music, improved jumping mechanics and control logic.                                      |
+| 02.11.24 | 0.3.0   | Added basic shop framework and implemented in-game currency collection mechanics. Addressed collision issues with platform logic. |
 
 ---
 
@@ -82,23 +84,6 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 | 5.A  | 20.09.24 | -           | Display high score post-game.                                  | 30'           |
 | 6.A  | 20.09.24 | -           | Ensure stationary platforms work correctly.                    | 180'          |
 | 6.B  | 20.09.24 | -           | Add moving, breakable, and one-time platforms.                 | 300'          |
-| 6.C  | 20.09.24 | -           | Integrate platform logic for character interaction.            | 240'          |
-| 7.A  | -        | -           | Game performance is optimized and smooth.                      | TBD           |
-| 8.A  | 27.09.24 | -           | Auto-save high scores.                                         | 60'           |
-| 9.A  | 27.09.24 | -           | Allow character customization after purchases.                 | 180'          |
-| 10.A | -        | -           | Ensure Android compatibility.                                  | -             |
-
-**Total Planned Time:** 1817 minutes (~30 hours)
-
----
-
-## 3. Key Decisions
-
-The selected user stories reflect essential functionality for the initial program. As our first .NET MAUI project, dividing tasks into manageable segments ensures each feature works independently, with room for advanced additions. Core components like platform generation and character movement are essential for full functionality.
-
-The work packages are designed to allow team members to collaborate flexibly, with responsibilities split into logic (C#) and GUI (XML) for seamless cooperation and troubleshooting.
-
----
 
 ## 4. Implementation
 
@@ -157,3 +142,9 @@ The work packages are designed to allow team members to collaborate flexibly, wi
 - Finish implementing shop functionality.
 - Optimize performance and conduct additional testing for smooth gameplay.
 - Develop and deploy to Android and potentially iOS for broader reach.
+
+# 8. Things we didn't finish
+
+- **Shop and Currency System**: The partial implementation of the shop and currency system presents a risk, as it requires additional time and testing to finalize the purchasing functionality.
+- **Collision Issues**: Collision problems with platforms may cause player frustration. This aspect requires focused debugging to ensure consistent gameplay.
+- **New Tech Stack**: Learning curve for .NET MAUI, requiring extra time for UI and logic integration.
