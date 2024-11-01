@@ -123,7 +123,7 @@ Keanu: https://portfolio.bbbaden.ch/view/view.php?t=c9f294f7561e1b65c724
 
 Cyril: https://portfolio.bbbaden.ch/view/view.php?t=40fba60858e5d34ef948
 
-Lorenzo: 
+Lorenzo: https://portfolio.bbbaden.ch/view/view.php?t=0bcf59c79427c14447a3
 
 Dorian:
 
