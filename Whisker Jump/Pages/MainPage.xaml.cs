@@ -1,8 +1,7 @@
 ﻿using Microsoft.Maui.Layouts;
 using Plugin.Maui.Audio;
-using Whisker_Jump.Models; // Import für HighScore
-using Whisker_Jump.Pages; // Import für SettingsPage und ShopPage
-// HALLO, PUBLIC IAUDIOPLAYER? _AUDIOMANAGER; ? UND PUBLIC SIND NACHER IMPLEMENTIERT WORDE SUST GEHT NICHT FALLS NICHT PUBLIC YK YK? ZEILE 443 PLAY MUSIC AU NO ÄNDERTLOLOLOLOLOL
+using Whisker_Jump.Models;
+using Whisker_Jump.Pages;
 
 namespace Whisker_Jump
 {
@@ -19,13 +18,13 @@ namespace Whisker_Jump
         private bool isJumping;
         private bool isGameOver;
         private bool isGameStarted;
-        private readonly List<BoxView> platforms = new();
-        private BoxView Character = null!;
+        private readonly List<Image> platforms = new();
+        private Image Character = null!;
         private readonly Random random = new();
         private const int PlatformCount = 6;
         private const double PlatformSpacing = 150;
         private readonly HighScore highScore;
-        private int sessionHighScore; // tracking session HS
+        private int sessionHighScore;
         private IDispatcherTimer? gameTimer;
         private IDispatcherTimer? highScoreTimer;
         private SettingsPage? settingsPageInstance = null;
@@ -34,7 +33,6 @@ namespace Whisker_Jump
         private bool isNavigatingToShop = false;
         private int currentScore;
 
-        // Parameterloser Konstruktor
         public MainPage() : this(new AudioManager())
         {
         }
@@ -46,7 +44,7 @@ namespace Whisker_Jump
             InitializeJoystick();
 
             highScore = new HighScore();
-            sessionHighScore = 0; // Initialize session high score to 0
+            sessionHighScore = 0;
             LoadHighScore();
             MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
 
@@ -56,13 +54,11 @@ namespace Whisker_Jump
 
         private void LoadHighScore()
         {
-            highScore.Value = highScore.Load(); // Load the all-time high score from storage
-            sessionHighScore = 0; // Reset session high score at the start of a new session
-            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Display all-time high score on main menu
-            GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Display on the game screen
-            HighScoreCounter.Text = sessionHighScore.ToString(); // Initialize session score display to 0
+            highScore.Value = highScore.Load();
+            sessionHighScore = 0;
+            MainMenuHighScoreLabel.Text = $"High Score: {highScore.Value}";
+            HighScoreCounter.Text = sessionHighScore.ToString();
         }
-
 
         private void InitializeGameTimer()
         {
@@ -92,25 +88,21 @@ namespace Whisker_Jump
         {
             if (!isGameOver && isGameStarted)
             {
-                currentScore += 100; // Increase score as needed
-                ScoreLabel.Text = $"Score: {currentScore}"; // Display the current score on the screen
+                currentScore += 100;
+                ScoreLabel.Text = $"Score: {currentScore}";
 
-                // Check if the current score beats the session high score
                 if (currentScore > sessionHighScore)
                 {
                     sessionHighScore = currentScore;
-                    HighScoreCounter.Text = sessionHighScore.ToString(); // Update session high score display
+                    HighScoreCounter.Text = sessionHighScore.ToString();
                 }
 
-                // Update all-time high score if session high score exceeds it
                 if (sessionHighScore > highScore.Value)
                 {
-                    highScore.Save(sessionHighScore); // Save the new all-time high score to persistent storage
-                    GameScreenHighScoreLabel.Text = $"High Score: {highScore.Value}"; // Update high score on game screen
+                    highScore.Save(sessionHighScore);
                 }
             }
         }
-
 
         private void UpdateCharacterPosition()
         {
@@ -159,6 +151,12 @@ namespace Whisker_Jump
                 characterX += e.TotalX * JoystickSensitivity / 100;
                 Character.TranslationX = characterX;
             }
+
+            if (!isJumping)
+            {
+                velocity = JumpSpeed;
+                isJumping = true;
+            }
         }
 
         private async void PlayButtonClicked(object sender, EventArgs args)
@@ -174,17 +172,16 @@ namespace Whisker_Jump
             highScoreTimer?.Start();
             await PlayMusic();
 
-            ScoreLabel.Text = "Score: 0"; // Reset the score label
+            ScoreLabel.Text = "Score: 0";
         }
 
         private void CreateCharacter()
         {
-            Character = new BoxView
+            Character = new Image
             {
-                Color = Colors.Red,
+                Source = "Images/main_char.png",
                 WidthRequest = 80,
                 HeightRequest = 80,
-                CornerRadius = 40,
                 BackgroundColor = Colors.Transparent
             };
 
@@ -208,8 +205,8 @@ namespace Whisker_Jump
             characterX = 0;
             platforms.Clear();
             PlatformsLayout.Children.Clear();
-            currentScore = 0; // Reset the current score
-            ScoreLabel.Text = "Score: 0"; // Reset the score label
+            currentScore = 0;
+            ScoreLabel.Text = "Score: 0";
         }
 
         private void GenerateInitialPlatforms()
@@ -223,11 +220,9 @@ namespace Whisker_Jump
                 double platformX = random.Next(0, (int)(Width - 150));
                 double platformY = previousPlatformY - PlatformSpacing;
 
-                var platform = new BoxView
+                var platform = new Image
                 {
-                    Color = Colors.SaddleBrown,
-                    WidthRequest = 150,
-                    HeightRequest = 30
+                    Source = "Images/platform_1.png"
                 };
 
                 AbsoluteLayout.SetLayoutBounds(platform, new Rect(platformX, platformY, 150, 30));
@@ -249,12 +244,15 @@ namespace Whisker_Jump
                 double characterBottom = characterY + Character.Height;
                 double characterTop = characterY;
 
-                if (velocity > 0 && characterBottom >= platformTop && characterTop <= platformBottom &&
+                const double tolerance = 5.0;
+
+                if (velocity > 0 && characterBottom >= platformTop - tolerance && characterTop <= platformBottom + tolerance &&
                     characterX + Character.Width >= platform.TranslationX && characterX <= platform.TranslationX + platform.Width)
                 {
                     velocity = 0;
                     characterY = platformTop - Character.Height;
                     isJumping = false;
+                    break;
                 }
             }
         }
@@ -327,11 +325,9 @@ namespace Whisker_Jump
 
                 if (!overlaps)
                 {
-                    var platform = new BoxView
+                    var platform = new Image
                     {
-                        Color = Colors.SaddleBrown,
-                        WidthRequest = platformWidth,
-                        HeightRequest = 30
+                        Source = "Images/platform_1.png"
                     };
 
                     AbsoluteLayout.SetLayoutBounds(platform, new Rect(platformX, platformY, platformWidth, 30));
@@ -367,13 +363,12 @@ namespace Whisker_Jump
                 highScoreTimer?.Stop();
                 DisplayAlert("Game Over", "You fell!", "OK");
 
-                // Check and save if current session score exceeds all-time high score
                 if (sessionHighScore > highScore.Value)
                 {
                     highScore.Save(sessionHighScore);
                 }
 
-                LoadHighScore(); // Reload to update the displayed high scores
+                LoadHighScore();
 
                 MainMenu.IsVisible = true;
                 GameScreen.IsVisible = false;
@@ -393,7 +388,7 @@ namespace Whisker_Jump
             {
                 if (settingsPageInstance == null)
                 {
-                    settingsPageInstance = new SettingsPage(this); // Pass the current instance of MainPage
+                    settingsPageInstance = new SettingsPage(this);
                 }
 
                 if (!Navigation.NavigationStack.Contains(settingsPageInstance))
@@ -454,10 +449,8 @@ namespace Whisker_Jump
 
                 _audioPlayer = _audioManager.CreatePlayer(filePath);
                 _audioPlayer.Loop = true;
-
-                // Set the volume to the current slider value or a default value
-                _audioPlayer.Volume = 0.5; // Set initial volume to 50% or use a variable if needed
-                _audioPlayer.Play(); // Start playback
+                _audioPlayer.Volume = 0.5;
+                _audioPlayer.Play();
             }
             catch (Exception ex)
             {

@@ -2,31 +2,26 @@ namespace Whisker_Jump.Pages
 {
     public partial class ShopPage : ContentPage
     {
-        // Variable to store fish count
-        private int fishCount = 13262; // This will later be updated
+        private int _fishCount = 13262;
 
         public ShopPage()
         {
             InitializeComponent();
-            UpdateFishCounter(); // Call this when the page loads to update the label
+            UpdateFishCounter();
         }
 
-        // Method to update the fish counter
         private void UpdateFishCounter()
         {
-            FishCounter.Text = fishCount.ToString();
+            FishCounter.Text = _fishCount.ToString();
         }
 
-        // Back button navigation
         private async void OnBackButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync(); // Navigate back to the previous page
+            await Navigation.PopAsync();
         }
 
-        // Event handler for when a shop item is clicked
         private async void OnItemClicked(object sender, EventArgs e)
         {
-            // Handle the item click logic, e.g., deduct fish or show an alert
             await DisplayAlert("Item Clicked", "You clicked a shop item!", "OK");
         }
     }

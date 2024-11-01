@@ -17,12 +17,10 @@ namespace Whisker_Jump.Pages
 
         private void OnVolumeSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            double volume = e.NewValue; // Get the new volume level from the slider
             if (_mainPage._audioPlayer != null)
             {
-                _mainPage._audioPlayer.Volume = volume; // Adjust the volume
+                _mainPage._audioPlayer.Volume = e.NewValue;
             }
-            // DA OBEN PRIVATE VOID GUGUGAGA 
         }
     }
 }

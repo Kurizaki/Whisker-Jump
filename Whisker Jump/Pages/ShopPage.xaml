@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Whisker_Jump.Pages.ShopPage"
              Title="Shop"
-             BackgroundColor="#F5DEB3">
-    <!-- Set the background color -->
+             BackgroundColor="#F5DEB3"
+             Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto" ColumnDefinitions="*,*,*">
 
@@ -26,7 +26,6 @@
                    VerticalOptions="Center"
                    Scale="1.8"/>
             <Label x:Name="FishCounter"
-                   Text="13262"
                    FontSize="20"
                    FontAttributes="Bold"
                    VerticalOptions="Center"

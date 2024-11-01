@@ -3,16 +3,19 @@
              x:Class="Whisker_Jump.MainPage"
              BackgroundColor="#F5DEB3">
     <Grid x:Name="MainGrid">
+        <!-- Background Image -->
         <Image Source="Resources/Images/main_background.png"
                Aspect="AspectFit"
                VerticalOptions="End"
                HorizontalOptions="FillAndExpand"
-               Margin="0,0,0,0"
+               Margin="0"
                WidthRequest="410"
                Opacity="1"/>
 
+        <!-- Platforms Layout -->
         <AbsoluteLayout x:Name="PlatformsLayout" VerticalOptions="FillAndExpand" />
 
+        <!-- Main Menu -->
         <VerticalStackLayout x:Name="MainMenu" IsVisible="True">
             <Grid Padding="10" VerticalOptions="Start">
                 <Grid.ColumnDefinitions>
@@ -42,12 +45,13 @@
             </Grid>
         </VerticalStackLayout>
 
+        <!-- Game Screen -->
         <Grid x:Name="GameScreen" IsVisible="False">
             <Grid HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,20">
-                <Label x:Name="GameScreenHighScoreLabel" Text="High Score: 0" AbsoluteLayout.LayoutBounds="0.5,0.1,0.5,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <Label x:Name="HighScoreCounter" Text="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.5,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <BoxView x:Name="Joystick" Color="Gray" WidthRequest="100" HeightRequest="100" CornerRadius="50"/>
+                <Label x:Name="HighScoreCounter" Text="0" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <BoxView x:Name="Joystick" Color="Gray" Opacity="0.5" WidthRequest="100" HeightRequest="100" CornerRadius="50" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,20"/>
             </Grid>
+
             <Label x:Name="ScoreLabel" Text="Score: 0" FontSize="24" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Margin="10"/>
         </Grid>
     </Grid>

@@ -17,10 +17,5 @@ namespace Whisker_Jump.Models
         {
             IsCollected = true;
         }
-
-        public void SpawnOnPlatform(Platform platform)
-        {
-            Position = new Vector2(platform.Position.X, platform.Position.Y - 20);
-        }
     }
 }

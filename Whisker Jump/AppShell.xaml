@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Whisker_Jump"
+    xmlns:local2="clr-namespace:Whisker_Jump.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="Whisker_Jump">
 
@@ -11,6 +12,16 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" 
+        Shell.NavBarIsVisible="False"/>
+    <ShellContent
+        Title="Shop"
+        ContentTemplate="{DataTemplate local2:ShopPage}"
+        Route="ShopPage" 
+        Shell.NavBarIsVisible="False"/>
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate local2:SettingsPage}"
+        Route="SettingsPage" 
         Shell.NavBarIsVisible="False"/>
 
 </Shell>
