@@ -10,10 +10,10 @@
 | 23.08.24 | 0.0.1   | Created a .NET MAUI project and started modifying the MainWindow.xaml file.                          |
 | 30.08.24 | 0.0.2   | Created a Figma prototype and began implementing the design in MAUI. Game logic is pending.          |
 | 06.09.24 | 0.0.3   | Updated the Figma design to align with the app. Created a use-case diagram and started platform logic.|
-| 13.09.24 | 0.1.0   | Implemented platform logic, adding sprites and movement controls.                                     |
-| 20.09.24 | 0.1.1   | Continued platform logic development and character movement.                                         |
-| 27.09.24 | 0.1.2   | Refined game logic and game loop for platforms and character movement.                               |
-| 01.11.24 | 0.2.0   | Added game music, improved jumping mechanics and control logic.                                      |
+| 13.09.24 | 0.0.4   | Implemented platform logic, adding sprites and movement controls.                                     |
+| 20.09.24 | 0.0.5   | Continued platform logic development and character movement.                                         |
+| 27.09.24 | 0.0.6   | Refined game logic and game loop for platforms and character movement.                               |
+| 01.11.24 | 0.1.0   | Added game music, improved jumping mechanics and control logic.                                      |
 
 
 ## 1. Project Overview
@@ -79,6 +79,10 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 | 5.A  | 20.09.24 | Cyril & Lorenzo        | Display high score post-game.                                  | 30'           |
 | 6.A  | 20.09.24 | Dorian           | Ensure stationary platforms work correctly.                    | 180'          |
 | 6.B  | 20.09.24 | Dorian & Cyril           | Add moving, breakable, and one-time platforms.                 | 300'          |
+
+## 3. Decision
+
+The decision for the next phase of the Whisker Jump project is to prioritize the completion of core functionalities to ensure a minimum viable product (MVP) that supports essential gameplay elements.
 
 ## 4. Implementation
 
