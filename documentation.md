@@ -16,9 +16,7 @@
 | 20.09.24 | 0.1.1   | Continued platform logic development and character movement.                                         |
 | 27.09.24 | 0.1.2   | Refined game logic and game loop for platforms and character movement.                               |
 | 01.11.24 | 0.2.0   | Added game music, improved jumping mechanics and control logic.                                      |
-| 02.11.24 | 0.3.0   | Added basic shop framework and implemented in-game currency collection mechanics. Addressed collision issues with platform logic. |
 
----
 
 ## 1. Project Overview
 
@@ -65,23 +63,22 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 
 ![Whisker-Jump_Use-Case](https://github.com/user-attachments/assets/08fde408-263b-4ce6-995a-e661468a1150)
 
----
 
 ## 2. Project Planning
 
 | AP-№ | Deadline | Responsible | Description | Planned Time |
 |------|----------|-------------|-------------|--------------|
-| 1.A  | 6.09.24  | -           | Add buttons at the screen bottom.                              | 45'           |
-| 1.B  | 6.09.24  | -           | Implement button-based character movement.                     | 180'          |
-| 2.A  | 6.09.24  | -           | Implement random platform logic with type distribution.        | 60'           |
-| 2.B  | 6.09.24  | -           | Add platform collision and interaction logic.                  | 200'          |
+| 1.A  | 6.09.24  | Keanu           | Add buttons at the screen bottom.                              | 45'           |
+| 1.B  | 6.09.24  | Keanu           | Implement button-based character movement.                     | 180'          |
+| 2.A  | 6.09.24  | Keanu & Lorenzo           | Implement random platform logic with type distribution.        | 60'           |
+| 2.B  | 6.09.24  | Keanu & Lorenzo           | Add platform collision and interaction logic.                  | 200'          |
 | 3.A  | 6.09.24  | -           | Implement fish spawn on platforms every 5 seconds.             | 30'           |
 | 3.B  | 13.09.24 | -           | Player can collect fish during gameplay.                       | 60'           |
 | 4.A  | 13.09.24 | -           | Display collected fish amount.                                 | 15'           |
 | 4.B  | 13.09.24 | -           | Add button to access shop at game start.                       | 45'           |
 | 4.C  | 13.09.24 | -           | Enable purchases in shop using fish.                           | 120'          |
 | 4.D  | 13.09.24 | -           | Complete shop logic with collectible and purchasable items.    | 180'          |
-| 5.A  | 20.09.24 | -           | Display high score post-game.                                  | 30'           |
+| 5.A  | 20.09.24 | Cyril        | Display high score post-game.                                  | 30'           |
 | 6.A  | 20.09.24 | -           | Ensure stationary platforms work correctly.                    | 180'          |
 | 6.B  | 20.09.24 | -           | Add moving, breakable, and one-time platforms.                 | 300'          |
 
@@ -96,15 +93,12 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 | 3.A  | 6.09.24  | -                | 30'          | 30'            |
 | 3.B  | 13.09.24 | -                | 60'          | In progress    |
 | 4.A  | 13.09.24 | -                | 15'          | 15'            |
-| 5.A  | 20.09.24 | -                | 30'          |   30'          |
+| 4.B  | 13.09.24 | -                | 45'          | 15'            |
+| 4.C  | 13.09.24 | -                | 120'          | 15'            |
+| 4.D  | 13.09.24 | -                | 180'          | 15'            |
+| 5.A  | 20.09.24 | Cyril            | 30'          |   30'          |
 | 6.A  | 20.09.24 | -                | 180'         |still working on it|
 | 6.B  | 20.09.24 | -                | 300'         |still working on it|
-| 6.C  | 20.09.24 | -                | 240'         |still working on it|
-| 7.A  | When finished | -           | ?            |                   |
-| 8.A  | 27.09.24 | -                | 60'          |still working on it|
-| 9.A  | 27.09.24 | -                | 180'         |still working on it|
-
----
 
 ## 5. Test Report and Evaluation
 
@@ -114,16 +108,15 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 |------|-------------|-------------------------------------------------------------------------|
 | 1    | Pass        | Character movement responsive and accurate.                            |
 | 2    | Pass        | Platforms generate randomly each session.                              |
-| 3    | Pass        | Fish collection mechanics working as intended.                         |
+| 3    | Incomplete  | Fish collection mechanics working as intended.                         |
 | 4    | Incomplete  | Shop functionality partially implemented, pending item purchases.      |
 | 5    | Pass        | High score displays correctly post-game.                               |
-| 6    | Pass        | Different platform types appear as expected.                           |
+| 6    | Incomplete  | Different platform types appear as expected.                           |
 | 7    | Pass        | Frame rate remains smooth.                                             |
 | 8    | Pass        | High scores save automatically.                                        |
 | 9    | Incomplete  | Skins unavailable in shop currently.                                   |
 | 10   | Pass        | Game operates on Android device.                                       |
 
----
 
 ## 6. Risk Analysis
 
@@ -134,17 +127,15 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 
 **Overall Project Risk:** Moderate – manageable with regular testing and team alignment.
 
----
-
-## 7. Next Steps
-
-- Complete and refine game logic and platform interaction.
-- Finish implementing shop functionality.
-- Optimize performance and conduct additional testing for smooth gameplay.
-- Develop and deploy to Android and potentially iOS for broader reach.
-
 # 8. Things we didn't finish
 
 - **Shop and Currency System**: The partial implementation of the shop and currency system presents a risk, as it requires additional time and testing to finalize the purchasing functionality.
 - **Collision Issues**: Collision problems with platforms may cause player frustration. This aspect requires focused debugging to ensure consistent gameplay.
 - **New Tech Stack**: Learning curve for .NET MAUI, requiring extra time for UI and logic integration.
+
+# Evaluation
+
+Keanu: https://portfolio.bbbaden.ch/view/view.php?t=c9f294f7561e1b65c724
+Cyril: https://portfolio.bbbaden.ch/view/view.php?t=40fba60858e5d34ef948
+Lorenzo: 
+Dorian:
