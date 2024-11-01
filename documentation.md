@@ -80,6 +80,8 @@ Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a ca
 | 6.A  | 20.09.24 | Dorian           | Ensure stationary platforms work correctly.                    | 180'          |
 | 6.B  | 20.09.24 | Dorian & Cyril           | Add moving, breakable, and one-time platforms.                 | 300'          |
 
+Total: 1445'
+
 ## 3. Decision
 
 The decision for the next phase of the Whisker Jump project is to prioritize the completion of core functionalities to ensure a minimum viable product (MVP) that supports essential gameplay elements.
