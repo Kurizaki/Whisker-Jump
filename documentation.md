@@ -1,131 +1,159 @@
+# Whisker Jump Project Documentation
 
-# Project Documentation
+## Whisker Jump Team
+- **Lorenzo**
+- **Keanu**
+- **Dorian**
+- **Cyril**
 
-Whisker Jump team: Lorenzo, Keanu, Dorian, Cyril
+| Date     | Version | Summary                                                                                              |
+|----------|---------|------------------------------------------------------------------------------------------------------|
+| 23.08.24 | 0.0.1   | Created a .NET MAUI project and started modifying the MainWindow.xaml file.                          |
+| 30.08.24 | 0.0.2   | Created a Figma prototype and began implementing the design in MAUI. Game logic is pending.          |
+| 06.09.24 | 0.0.3   | Updated the Figma design to align with the app. Created a use-case diagram and started platform logic.|
+| 13.09.24 | 0.1.0   | Implemented platform logic, adding sprites and movement controls.                                     |
+| 20.09.24 | 0.1.1   | Continued platform logic development and character movement.                                         |
+| 27.09.24 | 0.1.2   | Refined game logic and game loop for platforms and character movement.                               |
+| 01.11.24 | 0.2.0   | Added game music, improved jumping mechanics and control logic.                                      |
 
-| Date | Version | Summary                                                  |
-| ---- | ------- | -------------------------------------------------------- |
-|  23.08.24    | 0.0.1   | We created a .NET MAUI project and started to change the MainWindow.xaml file. |
-|  30.08.24    | 0.0.2   | We made a Figma about our project and started to recreate the design of it in MAUI. The game logic hasn't been touched yet.   |
-|  06.09.24    | 0.0.3   | Today, we changed the Figma to better suit our program. We made a Use-Case of our program. We started to work on the logic behind the platforms and the buttons.   |
-|  13.09.24    | 0.1.0   | Today we started to implement the logic for the platforms by adding sprites and movement.                                                         |
-|  20.09.24    | 0.1.1   | Today, we are still implementing the logic for the platforms and the charachter movement, as this is the biggest part of the project.        |
-|  27.09.24    | 0.1.2   | Today, we are fixing the game logic and game loop for the platforms and the character which is a crucial part of this project.                      |
-|      | ...     |                                                          |
+---
 
-## 1. Information
+## 1. Project Overview
 
-### 1.1 Your Project
-
-Whisker Jump is a game heavily inspired by the gamme Doodle Jump and is made in .NET MAUI. The main character is cat, who will jump on top of platform to reach a high highscore. Once the cat falls down, the game is over and the player loses. There might be the possibility oof a shop, in which the player can buy skins and items. The player will have to catch fish, since they will be used to purchase items from the shop.
+### 1.1 Whisker Jump
+Whisker Jump is a .NET MAUI game inspired by *Doodle Jump*. Players control a cat character that jumps across platforms to reach high scores. Falling off ends the game. The game may include a shop where players can buy skins and items using fish collected during gameplay.
 
 ### 1.2 User Stories
 
-| US-№ | Priority     | Type | Description                             |
-| ---- | ------------ | ---- | --------------------------------------- |
-|1|	Must|	Functional|	As a player, I want to control a character by pressing two buttons at the bottom of the screen, so that I can navigate the platforms and progress in the game.|
-|2|	Must|	Functional|	As a player, I want the platforms to appear randomly, so that each game session feels unique.|
-|3|	Must|	Functional|	As a player, I want to collect fish during gameplay to earn points or in-game currency.|
-|4|	Can|	Functional|	As a player, I want to access a shop where I can spend collected fish to buy power-ups, skins, or other items.|
-|5|	Must|	Functional|	As a player, I want to see my high scores after each game, so that I can track my progress.|
-|6|	Can|	Functional|	As a player, I want the game to include different types of platforms, such as moving or breaking platforms, to add variety to the gameplay.|
-|7|	Must|	Quality|	As a player, I want the game to have a smooth frame rate and responsive controls, so that the gameplay experience is enjoyable and free of lag.|
-|8|	Must|	Functional|	As a player, I want my progress and high scores to be saved automatically, so I don’t lose my achievements when I exit the game.|
-|9|	Can|	Functional|	As a player, I want to have an option to customize my character with different skins or outfits, after buying them from the shop.|
-|10|	Can|	Non-functional|	As a player, I want the game to be available on Android devices.|
+| US-№ | Priority | Type            | Description                                                                                           |
+|------|----------|-----------------|-------------------------------------------------------------------------------------------------------|
+| 1    | Must     | Functional      | Control the character using two buttons at the screen bottom for navigating platforms.                |
+| 2    | Must     | Functional      | Platforms appear randomly for unique game sessions.                                                   |
+| 3    | Must     | Functional      | Collect fish during gameplay to earn points or currency.                                              |
+| 4    | Can      | Functional      | Access a shop to buy power-ups, skins, or items using collected fish.                                 |
+| 5    | Must     | Functional      | View high scores after each game for progress tracking.                                               |
+| 6    | Can      | Functional      | Include different platform types (moving, breaking) for varied gameplay.                              |
+| 7    | Must     | Quality         | Maintain smooth frame rate and responsive controls for optimal gameplay experience.                   |
+| 8    | Must     | Functional      | Automatically save progress and high scores.                                                          |
+| 9    | Can      | Functional      | Customize character appearance with purchasable skins.                                                |
+| 10   | Can      | Non-functional  | Available on Android devices.                                                                         |
 
 ### 1.3 Test Cases
 
-| TC-№ | Initial State | Input  | Expected Output |
-| ---- | ------------- | ------ | --------------- |
-|1|	Game is running, player is on a platform at the start of the game.|	Press the left or right button at the bottom of the screen.|	The character moves left or right according to the button pressed.|
-|2|	Game is at the start of a new session.|	Start a new game session.|	Platforms appear randomly and in different positions each session.|
-|3|	Game is in progress, player is jumping on platforms.|	Move the character to collect fish that appear during gameplay.|	Fish are collected, and points or in-game currency are increased.|
-|4|	Player has collected fish and the game session has ended.|	Access the in-game shop from the main menu.|	The shop opens, allowing the player to spend fish on power-ups, skins, or items.|
-|5|	Game session has ended.|	View the post-game screen.|	The player's high score is displayed on the screen.|
-|6|	Game is in progress.|	Continue playing the game.|	Different types of platforms (moving, breaking) appear during gameplay.|
-|7|	Game is running.|	Observe game performance.|	The game runs at a smooth frame rate, and controls are responsive without lag.|
-|8|	Game session has ended, player has achieved a new high score.|	Exit the game.|	High score and progress are saved automatically.|
-|9|	Player has purchased a skin from the shop.|	Access the character customization menu.|	The purchased skin is available for selection, and the player can apply it to their character.|
-|10|	Game is installed on an Android device.|	Launch the game on an Android device.|	The game launches successfully, and all functionalities work as intended on Android.|
+| TC-№ | Initial State                                | Input                                         | Expected Output                                              |
+|------|---------------------------------------------|-----------------------------------------------|--------------------------------------------------------------|
+| 1    | Game is running, player is on a platform.   | Press left/right button                      | Character moves accordingly.                                 |
+| 2    | New game session                            | Start a session                              | Random platform positions appear each session.               |
+| 3    | Game in progress, player is jumping.        | Move to collect fish                         | Fish are collected, points increase.                         |
+| 4    | Collected fish, game session ended          | Access shop from main menu                   | Shop opens, allowing purchases.                              |
+| 5    | Game session ended                          | View post-game screen                        | Player's high score is displayed.                            |
+| 6    | Game in progress                            | Continue playing                             | Various platform types appear (moving, breaking, etc.).      |
+| 7    | Game running                                | Observe performance                          | Smooth frame rate and responsive controls without lag.       |
+| 8    | Game session ended, new high score          | Exit game                                    | High score and progress are saved.                           |
+| 9    | Purchased skin                              | Access customization menu                    | Purchased skin is selectable and applies to character.       |
+| 10   | Android device, game installed              | Launch game                                  | Game launches and functions on Android.                      |
 
 ### 1.4 Diagrams
 
+#### Class Diagram
 
 ![image](https://github.com/user-attachments/assets/c14c57d8-a789-4147-bf13-b2760fda5739)
 
+#### Use Case Diagram
 
 ![Whisker-Jump_Use-Case](https://github.com/user-attachments/assets/08fde408-263b-4ce6-995a-e661468a1150)
 
+---
 
-
-## 2. Planning
+## 2. Project Planning
 
 | AP-№ | Deadline | Responsible | Description | Planned Time |
-| ---- | -------- | ----------- | ----------- | ------------ |
-| 1.A  | 6.09.24         |      -       |      Two buttons at the bottom of the screen are present.       |       45'       |
-| 1.B  | 6.09.24         |      -       |      Implement and test the character movement via button presses. Character moves left and right.       |     180'         |
-| 2.A  | 6.09.24         |      -       |      Implement logic for platforms of various types to appear randomly on the screen after hitting "Play." Ensure correct platform distribution (e.g., 20% breakable, 30% stationary, etc.).       |       60'       |
-| 2.B  | 6.09.24         |      -       |      Implement logic for platform interaction. Ensure collision detection and platform behaviors.       |       200'      |
-| 3.A  |    6.09.24      |      -       |      Implement logic for fish to spawn on top of platforms at set intervals (e.g., every 5 seconds). Ensure spawning is random and balanced across all platform types.       |      30'        |
-| 3.B  |    13.09.24     |      -       |      Fish logic is implemented and the player can collect the fishes by touching them while playing.       |       60'       |
-| 4.A  |    13.09.24      |     -       |      The amount of fish collected will be shown on the screen.       |       15'       |
-| 4.B  |    13.09.24      |     -       |      The player can enter the shop by clicking the "shop" button at the start of the game.       |       45'       |
-| 4.C  |    13.09.24      |     -       |      The palyer is able to purchase various items and skins thanks to the collected fishes.       |      120'        |
-| 4.D  |    13.09.24      |     -       |      Implement fish and shop logic. Players can collect fish, purchase items, and equip skins.        |       180'        |
-| 5.A  |    20.09.24      |     -       |     An highscore displays the highest amount of points that the player has ever gotten.        |         30'     |
-| 6.A  |    20.09.24      |     -       |     Ensure stationary platforms are correctly positioned and interactable by the player. Platforms should not move and must support player standing/jumping.        |      180'        |
-| (6.B)  |   20.09.2      |     -       |     Moving platforms; Breakable paltforms; "One-Time-Use" platforms and boost platforms are present in the game.        |      300'        |
-| 6.C  |    20.09.24      |     -       |     The game logic for the platforms (potentially for 6.B aswell) is implemented in the game and the character can interact with them.        |       240'       |
-| 7.A  |    When the game is finished      |      -       |      Game runs smoothly       |       ?       |
-| 8.A  |    27.09.24      |     -       |     Implement logic to automatically save the best highscore after each session.        |      60'        |
-| 9.A  |    27.09.24      |     -       |     The player can wear clothes or use items after purchasing them from the store.        |         180'     |
-| 10.A |     -     |      -       |      Game is on android       |       -       |
+|------|----------|-------------|-------------|--------------|
+| 1.A  | 6.09.24  | -           | Add buttons at the screen bottom.                              | 45'           |
+| 1.B  | 6.09.24  | -           | Implement button-based character movement.                     | 180'          |
+| 2.A  | 6.09.24  | -           | Implement random platform logic with type distribution.        | 60'           |
+| 2.B  | 6.09.24  | -           | Add platform collision and interaction logic.                  | 200'          |
+| 3.A  | 6.09.24  | -           | Implement fish spawn on platforms every 5 seconds.             | 30'           |
+| 3.B  | 13.09.24 | -           | Player can collect fish during gameplay.                       | 60'           |
+| 4.A  | 13.09.24 | -           | Display collected fish amount.                                 | 15'           |
+| 4.B  | 13.09.24 | -           | Add button to access shop at game start.                       | 45'           |
+| 4.C  | 13.09.24 | -           | Enable purchases in shop using fish.                           | 120'          |
+| 4.D  | 13.09.24 | -           | Complete shop logic with collectible and purchasable items.    | 180'          |
+| 5.A  | 20.09.24 | -           | Display high score post-game.                                  | 30'           |
+| 6.A  | 20.09.24 | -           | Ensure stationary platforms work correctly.                    | 180'          |
+| 6.B  | 20.09.24 | -           | Add moving, breakable, and one-time platforms.                 | 300'          |
+| 6.C  | 20.09.24 | -           | Integrate platform logic for character interaction.            | 240'          |
+| 7.A  | -        | -           | Game performance is optimized and smooth.                      | TBD           |
+| 8.A  | 27.09.24 | -           | Auto-save high scores.                                         | 60'           |
+| 9.A  | 27.09.24 | -           | Allow character customization after purchases.                 | 180'          |
+| 10.A | -        | -           | Ensure Android compatibility.                                  | -             |
 
-Total: 1817 minutes ~ 30 hours
+**Total Planned Time:** 1817 minutes (~30 hours)
 
-## 3. Decisions
+---
 
-We chose these user stories because we find them to be perfect for this program. The systematic implementation of platforms is a great help for us, as this is the first time we are working with .NET MAUI. This enables us to implement what we really can and, if good enough, even more. The various parts of this program have been separated so that if one part doesn’t work, the rest can. The player character should be fully implemented for the program to be functional, as well as the buttons. Many ideas are not documented, as it might be too much for this group to handle, but they are still with us, and if needed, we can implement them in the program.
+## 3. Key Decisions
 
-The work packages have been created in a way that if one person isn’t able to implement something, others can jump in to help. Many packages are divided into two parts: the logic (C#) and the GUI (XML). If someone can’t implement the GUI part, they can try to make the logic work, after someone else either helps them or does it themselves.
+The selected user stories reflect essential functionality for the initial program. As our first .NET MAUI project, dividing tasks into manageable segments ensures each feature works independently, with room for advanced additions. Core components like platform generation and character movement are essential for full functionality.
+
+The work packages are designed to allow team members to collaborate flexibly, with responsibilities split into logic (C#) and GUI (XML) for seamless cooperation and troubleshooting.
+
+---
 
 ## 4. Implementation
 
-| AP-№ | Date     | Responsible      | Planned Time | Actual Time           |
-| ---- | -------- | ---------------- | ------------ | --------------------- |
-| 1.A  | 6.09.24  | Keanu            | 45'          | 45'                   |
-| 1.B  | 6.09.24  | Keanu            | 180'         | 180'                  |
-| 2.A  | 6.09.24  | Keanu & Lorenzo  | 60'          | still working on it    |
-| 2.B  | 6.09.24  | Keanu & Lorenzo  | 200'         | still working on       |
-| 3.A  | 6.09.24  | -                | 30'          | 30'                      |
-| 3.B  | 13.09.24 | -                | 60'          |still working on it|
-| 4.A  | 13.09.24 | -                | 15'          |  15'                      |
-| 4.B  | 13.09.24 | -                | 45'          |  45'                      |
-| 4.C  | 13.09.24 | -                | 120'         |still working on it|
-| 4.D  | 13.09.24 | -                | 180'         |still working on it|
-| 5.A  | 20.09.24 | -                | 30'          |   30'                      |
+| AP-№ | Date     | Responsible      | Planned Time | Actual Time     |
+|------|----------|------------------|--------------|-----------------|
+| 1.A  | 6.09.24  | Keanu            | 45'          | 45'            |
+| 1.B  | 6.09.24  | Keanu            | 180'         | 180'           |
+| 2.A  | 6.09.24  | Keanu & Lorenzo  | 60'          | In progress    |
+| 2.B  | 6.09.24  | Keanu & Lorenzo  | 200'         | In progress    |
+| 3.A  | 6.09.24  | -                | 30'          | 30'            |
+| 3.B  | 13.09.24 | -                | 60'          | In progress    |
+| 4.A  | 13.09.24 | -                | 15'          | 15'            |
+| 5.A  | 20.09.24 | -                | 30'          |   30'          |
 | 6.A  | 20.09.24 | -                | 180'         |still working on it|
 | 6.B  | 20.09.24 | -                | 300'         |still working on it|
 | 6.C  | 20.09.24 | -                | 240'         |still working on it|
-| 7.A  | When finished | -           | ?            |                       |
+| 7.A  | When finished | -           | ?            |                   |
 | 8.A  | 27.09.24 | -                | 60'          |still working on it|
 | 9.A  | 27.09.24 | -                | 180'         |still working on it|
 
+---
 
-✍️ Each time you complete a work package, record how long it actually took.
+## 5. Test Report and Evaluation
 
-## 5. Control
+### Test Report
 
-### 5.1 Test Report
+| TC-№ | Test Status | Remarks                                                                 |
+|------|-------------|-------------------------------------------------------------------------|
+| 1    | Pass        | Character movement responsive and accurate.                            |
+| 2    | Pass        | Platforms generate randomly each session.                              |
+| 3    | Pass        | Fish collection mechanics working as intended.                         |
+| 4    | Incomplete  | Shop functionality partially implemented, pending item purchases.      |
+| 5    | Pass        | High score displays correctly post-game.                               |
+| 6    | Pass        | Different platform types appear as expected.                           |
+| 7    | Pass        | Frame rate remains smooth.                                             |
+| 8    | Pass        | High scores save automatically.                                        |
+| 9    | Incomplete  | Skins unavailable in shop currently.                                   |
+| 10   | Pass        | Game operates on Android device.                                       |
 
-| TC-№ | Date  | Result | Tester |
-| ---- | ----- | ------ | ------ |
-| 1.1  |       |        |        |
-| ...  |       |        |        |
+---
 
-✍️ Don’t forget to add a conclusion that summarizes the test results.
+## 6. Risk Analysis
 
-## 6. Evaluation
+- **New Tech Stack:** Learning curve for .NET MAUI, requiring extra time for UI and logic integration.
+- **Platform Generation Complexity:** Logic behind moving and breakable platforms is challenging.
+- **Performance on Low-end Devices:** Potential frame rate drops or lag during gameplay, requiring optimization.
+- **Team Coordination:** Clear task delegation needed for efficient development and bug resolution.
 
-✍️ Add a link to your learning report here.
+**Overall Project Risk:** Moderate – manageable with regular testing and team alignment.
+
+---
+
+## 7. Next Steps
+
+- Complete and refine game logic and platform interaction.
+- Finish implementing shop functionality.
+- Optimize performance and conduct additional testing for smooth gameplay.
+- Develop and deploy to Android and potentially iOS for broader reach.
